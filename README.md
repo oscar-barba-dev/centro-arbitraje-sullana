@@ -4,7 +4,8 @@ Sitio web institucional y panel administrativo del Centro de Arbitraje de la Cá
 
 **Sitio en producción:** [centroarbitrajecamarasullana.com](https://centroarbitrajecamarasullana.com)
 
-<!-- 📸 Agregar aquí capturas de pantalla del sitio (inicio, tarifas, panel de administración, etc.) -->
+<img width="1296" height="617" alt="image" src="https://github.com/user-attachments/assets/24360ab1-f463-4103-8459-eb1d2d1914e7" />
+<img width="1208" height="627" alt="image" src="https://github.com/user-attachments/assets/bd9d17f7-d4ff-49d3-ae11-90d198b1bdbf" />
 
 ## Características principales
 
