@@ -61,6 +61,18 @@ img.zip
 *.exe
 
 # =============================================================================
+# Documentos reales (PDFs) — se gestionan fuera de Git, solo se versiona
+# la estructura de carpetas (.gitkeep). El código que los sirve
+# (documento.php, index.html, etc.) NO se ve afectado por esta regla.
+# =============================================================================
+documentos/*
+!documentos/.gitkeep
+public/docs/*
+!public/docs/.gitkeep
+uploads/archivos/*
+!uploads/archivos/.gitkeep
+
+# =============================================================================
 # Sistema operativo / editores
 # =============================================================================
 .DS_Store
