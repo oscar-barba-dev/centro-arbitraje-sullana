@@ -15,15 +15,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     try {
 
-        $user = filter_input(INPUT_POST, 'usuario', FILTER_SANITIZE_STRING);
+        $user = trim($_POST['usuario'] ?? '');
         $pass = $_POST['password'];
 
         $stmt = $pdo->prepare("SELECT * FROM usuarios WHERE usuario = :usuario LIMIT 1");
         $stmt->execute([':usuario' => $user]);
         $userData = $stmt->fetch();
 
-        // Verificar si el usuario existe y la contraseña es correcta (TEXTO PLANO)
-        if ($userData && $pass === $userData['password_hash']) {
+        // Verificar si el usuario existe y la contraseña es correcta (hash bcrypt)
+        if ($userData && password_verify($pass, $userData['password_hash'])) {
             $_SESSION['admin_logged_in'] = true;
             $_SESSION['admin_user'] = $userData['usuario'];
             $_SESSION['admin_role'] = $userData['rol'];

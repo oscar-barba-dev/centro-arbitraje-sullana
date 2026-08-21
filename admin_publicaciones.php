@@ -8,6 +8,27 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
 // Conexión a la base de datos (centralizada)
 require_once __DIR__ . '/conexion.php';
 
+// Valida que un archivo subido tenga una extensión y un tipo MIME permitidos
+function archivoEsValido(array $archivo, array $extensionesPermitidas, array $mimesPermitidos): bool {
+    $extension = strtolower(pathinfo($archivo['name'], PATHINFO_EXTENSION));
+    if (!in_array($extension, $extensionesPermitidas, true)) {
+        return false;
+    }
+    $finfo = finfo_open(FILEINFO_MIME_TYPE);
+    $mime = finfo_file($finfo, $archivo['tmp_name']);
+    finfo_close($finfo);
+    return in_array($mime, $mimesPermitidos, true);
+}
+
+$extensionesImagen = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+$mimesImagen = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+$extensionesDocumento = ['pdf', 'doc', 'docx'];
+$mimesDocumento = [
+    'application/pdf',
+    'application/msword',
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+];
+
 try {
 
     $msg = '';
@@ -43,8 +64,11 @@ try {
 
         // Manejo de subida de imagen
         if (isset($_FILES['portada_file']) && $_FILES['portada_file']['error'] === UPLOAD_ERR_OK) {
+            if (!archivoEsValido($_FILES['portada_file'], $extensionesImagen, $mimesImagen)) {
+                throw new Exception('La imagen de portada debe ser JPG, PNG, GIF o WEBP.');
+            }
             $uploadDir = 'uploads/portadas/';
-            if (!is_dir($uploadDir)) mkdir($uploadDir, 0777, true);
+            if (!is_dir($uploadDir)) mkdir($uploadDir, 0755, true);
             $filename = time() . '_' . preg_replace("/[^a-zA-Z0-9.]/", "_", basename($_FILES['portada_file']['name']));
             $targetPath = $uploadDir . $filename;
             if (move_uploaded_file($_FILES['portada_file']['tmp_name'], $targetPath)) {
@@ -54,8 +78,11 @@ try {
 
         // Manejo de subida de archivo (enlace)
         if (isset($_FILES['enlace_file']) && $_FILES['enlace_file']['error'] === UPLOAD_ERR_OK) {
+            if (!archivoEsValido($_FILES['enlace_file'], $extensionesDocumento, $mimesDocumento)) {
+                throw new Exception('El archivo de descarga debe ser PDF, DOC o DOCX.');
+            }
             $uploadDirDoc = 'uploads/archivos/';
-            if (!is_dir($uploadDirDoc)) mkdir($uploadDirDoc, 0777, true);
+            if (!is_dir($uploadDirDoc)) mkdir($uploadDirDoc, 0755, true);
             $filenameDoc = time() . '_' . preg_replace("/[^a-zA-Z0-9.]/", "_", basename($_FILES['enlace_file']['name']));
             $targetPathDoc = $uploadDirDoc . $filenameDoc;
             if (move_uploaded_file($_FILES['enlace_file']['tmp_name'], $targetPathDoc)) {
@@ -90,6 +117,8 @@ try {
 
 } catch (PDOException $e) {
     die("Error de base de datos: " . $e->getMessage());
+} catch (Exception $e) {
+    die("Error: " . $e->getMessage());
 }
 ?>
 <!DOCTYPE html>
