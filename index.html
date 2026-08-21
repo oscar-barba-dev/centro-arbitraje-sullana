@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centro de Arbitraje-Cámara de Comercio Sullana</title>
+    <link rel="icon" type="image/png" href="img/logo.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700;900&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { DEFAULT: '#064E3B', hover: '#065F46' },
+                        secondary: { DEFAULT: '#D4AF37', hover: '#B49A55' }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Merriweather', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hero-section {
+            position: relative;
+            overflow: hidden;
+            background-color: #fafaf9;
+            /* Fondo suave para la sección Hero */
+        }
+
+        .hero-slider-container {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+            z-index: 1;
+        }
+
+        .hero-slide img.bg-cover-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+            transition: transform 12s ease-out;
+            transform: scale(1);
+        }
+
+        .hero-slide.active img.bg-cover-img {
+            transform: scale(1.08);
+            /* Suave efecto de acercamiento al mostrarse */
+        }
+
+        .hero-slide img.bg-contain-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 5%;
+            background-color: #ffffff;
+            /* Fondo blanco para resaltar el logo sin transparencia mala */
+            transition: transform 12s ease-out;
+            transform: scale(1);
+        }
+
+        .hero-slide.active img.bg-contain-img {
+            transform: scale(1.03);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, rgba(6, 78, 59, 0.85) 0%, rgba(28, 25, 23, 0.7) 100%);
+            z-index: 2;
+        }
+
+        .hero-content {
+            z-index: 3;
+        }
+
+        .service-card:hover .service-img {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body class="font-sans text-stone-800 bg-stone-50 antialiased flex flex-col min-h-screen">
+
+    <!-- Navegación -->
+    <header id="navbar"
+        class="fixed w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-md shadow-sm border-b border-stone-200">
+        <div class="container mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="img/logo.png" alt="Centro de Arbitraje-Cámara de Comercio Sullana"
+                    class="h-12 w-auto drop-shadow-sm group-hover:scale-105 transition-transform duration-300">
+                <div class="flex flex-col">
+                    <span class="font-serif font-bold text-xl leading-tight text-primary">Centro de Arbitraje</span>
+                    <span class="text-xs font-medium text-stone-500 uppercase tracking-widest">Cámara de Comercio
+                        Sullana</span>
+                </div>
+            </a>
+
+            <nav class="hidden lg:flex items-center gap-8 font-medium">
+                <a href="index.html"
+                    class="text-primary font-bold transition-colors border-b-2 border-primary">Inicio</a>
+                <a href="nosotros.html" class="text-stone-600 hover:text-primary transition-colors">Nosotros</a>
+                <a href="servicios.html" class="text-stone-600 hover:text-primary transition-colors">Servicios</a>
+                <a href="publicaciones.html"
+                    class="text-stone-600 hover:text-primary transition-colors">Publicaciones</a>
+                <a href="tarifas.html" class="text-stone-600 hover:text-primary transition-colors">Tarifas</a>
+                <a href="contacto.html"
+                    class="bg-primary text-white px-5 py-2.5 rounded-md hover:bg-primary-hover transition-colors font-semibold shadow-md">Contactar</a>
+            </nav>
+
+            <button id="mobile-menu-btn" class="lg:hidden text-primary text-3xl">
+                <i class="ph ph-list"></i>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-stone-100 absolute w-full shadow-lg">
+            <nav class="flex flex-col p-4 gap-4">
+                <a href="index.html" class="text-primary font-bold">Inicio</a>
+                <a href="nosotros.html" class="text-stone-600 font-medium">Nosotros</a>
+                <a href="servicios.html" class="text-stone-600 font-medium">Servicios</a>
+                <a href="publicaciones.html" class="text-stone-600 font-medium">Publicaciones</a>
+                <a href="tarifas.html" class="text-stone-600 font-medium">Tarifas</a>
+                <a href="contacto.html"
+                    class="bg-primary text-white text-center py-2 rounded-md font-semibold">Contactar</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow pt-20">
+
+        <!-- 1. Hero Section con Carrusel -->
+        <section class="hero-section text-white py-32 md:py-40 relative flex items-center min-h-[90vh]">
+
+            <!-- Carrusel de fondos -->
+            <div class="hero-slider-container">
+                <div class="hero-slide active">
+                    <img src="img/Centro de Arbitraje 2.jpg" alt="Instalaciones del Centro de Arbitraje"
+                        class="bg-cover-img">
+                </div>
+                <div class="hero-slide">
+                    <!-- Fondo blanco integrado por css para el logo y object-fit: contain -->
+                    <img src="img/logo.png" alt="Logo Institucional" class="bg-contain-img">
+                </div>
+            </div>
+
+            <!-- Capa superpuesta del Hero (Degradado) -->
+            <div class="hero-overlay"></div>
+
+            <div class="container mx-auto px-6 relative hero-content">
+                <div class="max-w-4xl fade-in">
+                    <div
+                        class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary/20 text-secondary mb-6 border border-secondary/30 backdrop-blur-sm">
+                        <i class="ph-fill ph-shield-check text-lg"></i>
+                        <span class="text-sm font-semibold tracking-wide uppercase">Institución Líder en el Norte del
+                            País</span>
+                    </div>
+                    <h1 class="font-serif text-5xl md:text-7xl font-bold leading-tight mb-8">
+                        Resolución de Conflictos con <span class="text-secondary">Seguridad y Eficiencia</span>
+                    </h1>
+                    <p class="text-lg md:text-2xl text-stone-200 mb-12 max-w-3xl leading-relaxed">
+                        Garantizamos un proceso arbitral transparente y especializado, respaldado por la confianza
+                        institucional del Centro de Arbitraje-Cámara de Comercio Sullana.
+                    </p>
+                    <div class="flex flex-wrap gap-5">
+                        <a href="tarifas.html"
+                            class="bg-secondary text-primary px-8 py-4 rounded-xl hover:bg-secondary-hover transition-all font-bold text-lg shadow-xl hover:-translate-y-1 flex items-center gap-2">
+                            <i class="ph-bold ph-calculator"></i> Calcular Arancel
+                        </a>
+                        <a href="servicios.html"
+                            class="bg-white/10 backdrop-blur-md border border-white/30 text-white px-8 py-4 rounded-xl hover:bg-white/20 transition-all font-bold text-lg flex items-center gap-2">
+                            <i class="ph-bold ph-arrow-right"></i> Conoce nuestros servicios
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Tarjetas de Servicios -->
+        <section class="py-24 bg-white relative -mt-16 z-20">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                    <!-- Tarjeta Arbitraje -->
+                    <div
+                        class="service-card bg-white rounded-3xl shadow-2xl border border-stone-100 overflow-hidden flex flex-col group fade-in">
+                        <div class="h-64 overflow-hidden relative">
+                            <div
+                                class="absolute inset-0 bg-primary/20 z-10 group-hover:bg-transparent transition-colors duration-500">
+                            </div>
+                            <img src="img/Centro de Arbitraje 2.jpg" alt="Arbitraje"
+                                class="service-img w-full h-full object-cover object-top transition-transform duration-700">
+                            <div
+                                class="absolute top-4 left-4 z-20 bg-white/90 backdrop-blur-sm p-3 rounded-2xl shadow-lg text-primary">
+                                <i class="ph-fill ph-scales text-3xl"></i>
+                            </div>
+                        </div>
+                        <div class="p-10 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-serif text-3xl font-bold text-primary mb-4">Arbitraje Institucional</h3>
+                                <p class="text-stone-600 text-lg leading-relaxed mb-8">
+                                    Administración integral y especializada de controversias bajo nuestro reglamento,
+                                    garantizando celeridad, confidencialidad y laudos con plena validez legal.
+                                </p>
+                            </div>
+                            <a href="servicios.html"
+                                class="inline-flex items-center gap-2 text-secondary font-bold text-lg hover:text-primary transition-colors group/link">
+                                Ver más detalles <i
+                                    class="ph-bold ph-arrow-right group-hover/link:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta JRD -->
+                    <div class="service-card bg-white rounded-3xl shadow-2xl border border-stone-100 overflow-hidden flex flex-col group fade-in"
+                        style="transition-delay: 100ms;">
+                        <div class="h-64 overflow-hidden relative">
+                            <div
+                                class="absolute inset-0 bg-primary/20 z-10 group-hover:bg-transparent transition-colors duration-500">
+                            </div>
+                            <img src="img/balanza.png" alt="Junta de Resolución de Disputas"
+                                class="service-img w-full h-full object-cover transition-transform duration-700">
+                            <div
+                                class="absolute top-4 left-4 z-20 bg-white/90 backdrop-blur-sm p-3 rounded-2xl shadow-lg text-primary">
+                                <i class="ph-fill ph-users-three text-3xl"></i>
+                            </div>
+                        </div>
+                        <div class="p-10 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-serif text-3xl font-bold text-primary mb-4">Junta de Resolución de
+                                    Disputas (JRD)</h3>
+                                <p class="text-stone-600 text-lg leading-relaxed mb-8">
+                                    Acompañamiento especializado durante la ejecución de obras públicas o privadas para
+                                    prevenir y resolver conflictos en tiempo real, evitando paralizaciones.
+                                </p>
+                            </div>
+                            <a href="servicios.html"
+                                class="inline-flex items-center gap-2 text-secondary font-bold text-lg hover:text-primary transition-colors group/link">
+                                Ver más detalles <i
+                                    class="ph-bold ph-arrow-right group-hover/link:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Cinta de Métricas de Confianza -->
+        <section class="py-20 bg-primary relative overflow-hidden">
+            <div
+                class="absolute inset-0 opacity-5 bg-[url('https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80')] bg-cover bg-center">
+            </div>
+            <div class="container mx-auto px-6 relative z-10">
+                <div
+                    class="grid grid-cols-1 md:grid-cols-2 gap-12 text-center divide-y md:divide-y-0 md:divide-x divide-emerald-800 max-w-2xl mx-auto">
+                    <div class="fade-in py-4">
+                        <span class="block font-serif text-6xl font-bold text-secondary mb-2">6</span>
+                        <span class="block text-emerald-100 text-lg font-medium uppercase tracking-wider">Años de
+                            Experiencia</span>
+                    </div>
+                    <div class="fade-in py-4" style="transition-delay: 100ms;">
+                        <span class="block font-serif text-6xl font-bold text-secondary mb-2">20</span>
+                        <span
+                            class="block text-emerald-100 text-lg font-medium uppercase tracking-wider">Árbitros</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Grid de Herramientas (Accesos Rápidos) -->
+        <section class="py-24 bg-stone-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-2xl mx-auto mb-16 fade-in">
+                    <h2 class="font-serif text-4xl font-bold text-primary mb-4">Herramientas y Accesos Rápidos</h2>
+                    <div class="w-20 h-1.5 bg-secondary mx-auto rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+
+                    <a href="documento.php?file=reglamento_procesal&view=1" target="_blank"
+                        class="group flex items-center gap-4 bg-white border border-stone-200 rounded-2xl p-6 hover:shadow-xl hover:border-primary/40 hover:-translate-y-1 transition-all duration-300 fade-in">
+                        <div
+                            class="w-14 h-14 shrink-0 bg-primary/5 rounded-2xl flex items-center justify-center group-hover:bg-primary transition-colors duration-300">
+                            <i
+                                class="ph-fill ph-scales text-3xl text-primary group-hover:text-secondary transition-colors duration-300"></i>
+                        </div>
+                        <div class="min-w-0 flex-1">
+                            <h3
+                                class="font-serif font-bold text-stone-800 text-lg group-hover:text-primary transition-colors">
+                                Reglamento Procesal</h3>
+                            <p class="text-stone-400 text-sm mt-1">Normas del procedimiento arbitral</p>
+                        </div>
+                        <i
+                            class="ph-bold ph-arrow-up-right text-stone-300 group-hover:text-primary shrink-0 text-xl transition-colors"></i>
+                    </a>
+
+                    <a href="documento.php?file=reglamento_aranceles&view=1" target="_blank"
+                        class="group flex items-center gap-4 bg-white border border-stone-200 rounded-2xl p-6 hover:shadow-xl hover:border-primary/40 hover:-translate-y-1 transition-all duration-300 fade-in"
+                        style="transition-delay:100ms">
+                        <div
+                            class="w-14 h-14 shrink-0 bg-primary/5 rounded-2xl flex items-center justify-center group-hover:bg-primary transition-colors duration-300">
+                            <i
+                                class="ph-fill ph-money text-3xl text-primary group-hover:text-secondary transition-colors duration-300"></i>
+                        </div>
+                        <div class="min-w-0 flex-1">
+                            <h3
+                                class="font-serif font-bold text-stone-800 text-lg group-hover:text-primary transition-colors">
+                                Reglamento de Aranceles</h3>
+                            <p class="text-stone-400 text-sm mt-1">Estructura de costos arbitrales</p>
+                        </div>
+                        <i
+                            class="ph-bold ph-arrow-up-right text-stone-300 group-hover:text-primary shrink-0 text-xl transition-colors"></i>
+                    </a>
+
+                    <a href="documentos/CÓDIGO DEL CENTRO DE ARBITRAJE DE LA CÁMARA DE COMERCIO.pdf" target="_blank"
+                        class="group flex items-center gap-4 bg-white border border-stone-200 rounded-2xl p-6 hover:shadow-xl hover:border-primary/40 hover:-translate-y-1 transition-all duration-300 fade-in"
+                        style="transition-delay:200ms">
+                        <div
+                            class="w-14 h-14 shrink-0 bg-primary/5 rounded-2xl flex items-center justify-center group-hover:bg-primary transition-colors duration-300">
+                            <i
+                                class="ph-fill ph-book-open text-3xl text-primary group-hover:text-secondary transition-colors duration-300"></i>
+                        </div>
+                        <div class="min-w-0 flex-1">
+                            <h3
+                                class="font-serif font-bold text-stone-800 text-lg group-hover:text-primary transition-colors">
+                                Código del Centro de Arbitraje</h3>
+                            <p class="text-stone-400 text-sm mt-1">Cámara de Comercio</p>
+                        </div>
+                        <i
+                            class="ph-bold ph-arrow-up-right text-stone-300 group-hover:text-primary shrink-0 text-xl transition-colors"></i>
+                    </a>
+
+                    <a href="documentos/LICENCIA DE FUNCIONAMIENTO DEFINITIVA.pdf" target="_blank"
+                        class="group flex items-center gap-4 bg-white border border-stone-200 rounded-2xl p-6 hover:shadow-xl hover:border-primary/40 hover:-translate-y-1 transition-all duration-300 fade-in"
+                        style="transition-delay:300ms">
+                        <div
+                            class="w-14 h-14 shrink-0 bg-primary/5 rounded-2xl flex items-center justify-center group-hover:bg-primary transition-colors duration-300">
+                            <i
+                                class="ph-fill ph-certificate text-3xl text-primary group-hover:text-secondary transition-colors duration-300"></i>
+                        </div>
+                        <div class="min-w-0 flex-1">
+                            <h3
+                                class="font-serif font-bold text-stone-800 text-lg group-hover:text-primary transition-colors">
+                                Licencia de Funcionamiento</h3>
+                            <p class="text-stone-400 text-sm mt-1">Documento Definitiva</p>
+                        </div>
+                        <i
+                            class="ph-bold ph-arrow-up-right text-stone-300 group-hover:text-primary shrink-0 text-xl transition-colors"></i>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Sección de Actualidad/Blog -->
+        <section class="py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="flex justify-between items-end mb-16 fade-in">
+                    <div>
+                        <h2 class="font-serif text-4xl font-bold text-primary mb-4">Actualidad Institucional</h2>
+                        <div class="w-20 h-1.5 bg-secondary rounded-full"></div>
+                    </div>
+                    <a href="publicaciones.html"
+                        class="hidden md:flex items-center gap-2 text-primary font-bold hover:text-secondary transition-colors">
+                        Ver todas las publicaciones <i class="ph-bold ph-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="grid-noticias-inicio">
+                    <div class="col-span-full py-12 text-center"><i
+                            class="ph ph-spinner animate-spin text-4xl text-stone-400"></i>
+                        <p class="mt-4 text-stone-500">Cargando publicaciones recientes...</p>
+                    </div>
+                </div>
+
+                <div class="mt-10 text-center md:hidden fade-in">
+                    <a href="publicaciones.html"
+                        class="inline-flex items-center gap-2 text-primary font-bold hover:text-secondary transition-colors">
+                        Ver todas las publicaciones <i class="ph-bold ph-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Suscripción al Boletín -->
+        <section class="py-20 bg-stone-100 border-y border-stone-200">
+            <div class="container mx-auto px-6">
+                <div
+                    class="bg-primary rounded-3xl p-10 md:p-16 flex flex-col md:flex-row items-center justify-between gap-12 relative overflow-hidden fade-in shadow-2xl">
+                    <div class="absolute -right-20 -top-20 opacity-10">
+                        <i class="ph-fill ph-newspaper" style="font-size: 250px;"></i>
+                    </div>
+                    <div class="md:w-1/2 relative z-10">
+                        <div
+                            class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/20 text-secondary mb-4 border border-secondary/30 text-sm font-semibold">
+                            <i class="ph-fill ph-envelope-open"></i> Boletín Institucional
+                        </div>
+                        <h2 class="font-serif text-3xl md:text-4xl font-bold text-white mb-4">Solicite su suscripción al
+                            boletín</h2>
+                        <p class="text-emerald-100 text-lg">Regístrese para recibir las últimas normativas,
+                            resoluciones, artículos de interés y convocatorias a eventos académicos. Su solicitud será
+                            revisada y aprobada por nuestro equipo.</p>
+                    </div>
+                    <div class="md:w-1/2 w-full relative z-10">
+                        <div id="boletin-alert" class="hidden mb-4 p-4 rounded-xl font-medium border text-sm"></div>
+                        <form id="form-boletin" class="flex flex-col gap-4">
+                            <div class="flex flex-col sm:flex-row gap-4">
+                                <input type="text" id="boletin-nombre" name="nombre" placeholder="Su Nombre Completo"
+                                    required
+                                    class="w-full px-5 py-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-secondary text-stone-800 font-medium">
+                                <input type="email" id="boletin-correo" name="correo"
+                                    placeholder="Su Correo Electrónico" required
+                                    class="w-full px-5 py-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-secondary text-stone-800 font-medium">
+                            </div>
+                            <input type="tel" id="boletin-telefono" name="telefono"
+                                placeholder="Su Número de Teléfono / Celular" required
+                                class="w-full px-5 py-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-secondary text-stone-800 font-medium">
+                            <label class="flex items-start gap-3 text-emerald-100 text-sm cursor-pointer">
+                                <input type="checkbox" required class="mt-1 accent-yellow-400 w-4 h-4 shrink-0">
+                                <span>Acepto recibir comunicaciones institucionales del Centro de Arbitraje-Cámara de
+                                    Comercio Sullana y
+                                    entiendo que mi solicitud será revisada antes de ser aprobada.</span>
+                            </label>
+                            <button type="submit" id="boletin-btn"
+                                class="bg-secondary text-primary font-bold py-4 rounded-xl hover:bg-yellow-500 transition-colors shadow-lg text-lg flex justify-center items-center gap-2">
+                                <i class="ph-bold ph-paper-plane-right"></i> Enviar Solicitud
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 7. Footer Completo -->
+    <footer class="bg-stone-900 text-stone-300 pt-20 pb-10 border-t-8 border-secondary mt-auto">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+
+                <!-- Columna 1: Marca -->
+                <div>
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="bg-white p-1.5 rounded-lg shadow-sm">
+                            <img src="img/logo.png" alt="Centro de Arbitraje-Cámara de Comercio Sullana"
+                                class="h-10 w-auto object-contain">
+                        </div>
+                        <div>
+                            <span class="font-serif font-bold text-xl text-white block">Centro de Arbitraje</span>
+                            <span class="text-xs tracking-widest uppercase text-stone-400">Cámara de Comercio
+                                Sullana</span>
+                        </div>
+                    </div>
+                    <p class="text-stone-400 text-sm leading-relaxed mb-6">
+                        Institución líder en la resolución de controversias mediante el arbitraje, garantizando
+                        imparcialidad, celeridad y seguridad jurídica.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-stone-800 flex items-center justify-center hover:bg-secondary hover:text-primary transition-colors"><i
+                                class="ph-fill ph-facebook-logo text-xl"></i></a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-stone-800 flex items-center justify-center hover:bg-secondary hover:text-primary transition-colors"><i
+                                class="ph-fill ph-linkedin-logo text-xl"></i></a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-stone-800 flex items-center justify-center hover:bg-secondary hover:text-primary transition-colors"><i
+                                class="ph-fill ph-twitter-logo text-xl"></i></a>
+                    </div>
+                </div>
+
+                <!-- Columna 2: Ubicación y Horarios -->
+                <div>
+                    <h4 class="font-serif text-lg font-bold text-white mb-6">Sede Central</h4>
+                    <ul class="space-y-4 text-stone-400 text-sm">
+                        <li class="flex items-start gap-3">
+                            <i class="ph-fill ph-map-pin text-secondary text-lg shrink-0"></i>
+                            <a href="https://www.google.com/maps/place/Cámara+de+Comercio,+Producción+y+Turismo+-+Sullana/@-4.8928074,-80.6898185,20z/data=!4m6!3m5!1s0x9035fbc7b75db631:0x716506d26c8687fa!8m2!3d-4.8929187!4d-80.6898146!16s%2Fg%2F1yj4k4b33?authuser=0&entry=ttu&g_ep=EgoyMDI2MDQxNC4wIKXMDSoASAFQAw%3D%3D"
+                                target="_blank" rel="noopener noreferrer"
+                                class="hover:text-secondary transition-colors">Calle San Martín N.º 1021<br>Sullana,
+                                Piura</a>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="ph-fill ph-clock text-secondary text-lg shrink-0"></i>
+                            <span>Lunes a Viernes<br>08:30 a.m. - 05:30 p.m.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Columna 3: Contacto -->
+                <div>
+                    <h4 class="font-serif text-lg font-bold text-white mb-6">Contáctenos</h4>
+                    <ul class="space-y-4 text-stone-400 text-sm">
+                        <li class="flex flex-col gap-1">
+                            <span class="text-white font-medium">Correo Institucional:</span>
+                            <a href="mailto:camarasullanacentroarbitraje@gmail.com"
+                                class="hover:text-secondary transition-colors"><i
+                                    class="ph-fill ph-envelope-simple text-secondary mr-2"></i>camarasullanacentroarbitraje@gmail.com</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Columna 4: Enlaces Legales -->
+                <div>
+                    <h4 class="font-serif text-lg font-bold text-white mb-6">Marco Legal</h4>
+                    <ul class="space-y-3 text-stone-400 text-sm">
+                        <li><a href="#" class="hover:text-secondary transition-colors flex items-center gap-2"><i
+                                    class="ph-bold ph-caret-right text-secondary"></i> Estatuto del Centro</a></li>
+                        <li><a href="#" class="hover:text-secondary transition-colors flex items-center gap-2"><i
+                                    class="ph-bold ph-caret-right text-secondary"></i> Reglamento de Arbitraje</a></li>
+                        <li><a href="#" class="hover:text-secondary transition-colors flex items-center gap-2"><i
+                                    class="ph-bold ph-caret-right text-secondary"></i> Código de Ética</a></li>
+                        <li><a href="#" class="hover:text-secondary transition-colors flex items-center gap-2"><i
+                                    class="ph-bold ph-caret-right text-secondary"></i> Políticas de Privacidad</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div
+                class="border-t border-stone-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-stone-500">
+                <p>&copy;
+                    <script>document.write(new Date().getFullYear())</script> Centro de Arbitraje-Cámara de Comercio
+                    Sullana. Todos los
+                    derechos reservados.
+                </p>
+                <p>Diseñado con estándares de <span class="text-stone-400 font-medium">Seguridad Jurídica</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lógica JavaScript Común -->
+    <script>
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) navbar.classList.add('py-2', 'shadow-md');
+            else navbar.classList.remove('py-2', 'shadow-md');
+        });
+
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Lógica del Carrusel de Fondo en el Hero
+        const heroSlides = document.querySelectorAll('.hero-slide');
+        if (heroSlides.length > 1) {
+            let currentHeroSlide = 0;
+            setInterval(() => {
+                heroSlides[currentHeroSlide].classList.remove('active');
+                currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
+                heroSlides[currentHeroSlide].classList.add('active');
+            }, 6000); // Cambia cada 6 segundos
+        }
+
+        // Lógica para cargar las 3 publicaciones más recientes
+        async function cargarUltimasPublicaciones() {
+            const gridContainer = document.getElementById('grid-noticias-inicio');
+            if (!gridContainer) return;
+
+            try {
+                const response = await fetch('obtener_publicaciones.php');
+                const result = await response.json();
+
+                if (result.success && result.data.length > 0) {
+                    // Tomar solo las primeras 3 publicaciones
+                    const ultimas = result.data.slice(0, 3);
+                    gridContainer.innerHTML = '';
+
+                    ultimas.forEach((pub, index) => {
+                        const article = document.createElement('article');
+                        article.className = 'bg-stone-50 rounded-3xl overflow-hidden border border-stone-100 shadow-sm hover:shadow-xl transition-shadow fade-in group flex flex-col h-full visible zoom-in';
+                        article.style.transitionDelay = `${index * 100}ms`;
+
+                        // Extraer fecha (o usar una predeterminada si no hay)
+                        const fecha = pub.fecha ? new Date(pub.fecha).toLocaleDateString('es-PE', { year: 'numeric', month: 'long', day: 'numeric' }) : 'Publicación Reciente';
+
+                        article.innerHTML = `
+                            <div class="h-56 overflow-hidden relative">
+                                <div class="absolute inset-0 bg-primary/10 z-10 group-hover:bg-transparent transition-colors duration-500"></div>
+                                <img src="${pub.portada}" alt="${pub.titulo}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <div class="absolute top-4 right-4 bg-secondary text-primary font-bold text-xs uppercase tracking-widest px-3 py-1.5 rounded-full shadow-lg z-20">
+                                    ${pub.categoria}
+                                </div>
+                            </div>
+                            <div class="p-8 flex-grow flex flex-col">
+                                <span class="text-xs font-bold text-stone-500 uppercase tracking-widest mb-3 block">${fecha}</span>
+                                <h3 class="font-serif text-xl font-bold text-primary mb-4 line-clamp-2 hover:text-secondary transition-colors cursor-pointer" title="${pub.titulo}">
+                                    ${pub.titulo}
+                                </h3>
+                                <p class="text-stone-600 text-sm mb-6 flex-grow line-clamp-3">
+                                    ${pub.resumen}
+                                </p>
+                                <a href="${pub.enlace}" class="text-stone-500 font-medium text-sm flex items-center gap-2 hover:text-primary transition-colors mt-auto" target="_blank">
+                                    Leer / Descargar <i class="ph-bold ph-arrow-right"></i>
+                                </a>
+                            </div>
+                        `;
+                        gridContainer.appendChild(article);
+                        observer.observe(article);
+                    });
+                } else {
+                    gridContainer.innerHTML = '<div class="col-span-full py-12 text-center text-stone-500">No hay publicaciones disponibles en este momento.</div>';
+                }
+            } catch (error) {
+                console.error('Error al cargar publicaciones:', error);
+                gridContainer.innerHTML = '<div class="col-span-full py-12 text-center text-red-500">No se pudieron cargar las publicaciones.</div>';
+            }
+        }
+
+        // Inicializar carga al cargar el DOM
+        document.addEventListener('DOMContentLoaded', cargarUltimasPublicaciones);
+
+        // Formulario de solicitud de suscripción al boletín
+        const formBoletin = document.getElementById('form-boletin');
+        const boletinBtn = document.getElementById('boletin-btn');
+        const boletinAlert = document.getElementById('boletin-alert');
+
+        formBoletin.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            boletinBtn.disabled = true;
+            boletinBtn.innerHTML = '<i class="ph ph-spinner animate-spin"></i> Enviando...';
+            boletinAlert.classList.add('hidden');
+
+            const fd = new FormData(formBoletin);
+
+            try {
+                const res = await fetch('procesar_suscripcion.php', { method: 'POST', body: fd });
+                const result = await res.json();
+
+                boletinAlert.classList.remove('hidden',
+                    'bg-emerald-900/50', 'text-emerald-100', 'border-emerald-500',
+                    'bg-red-900/50', 'text-red-200', 'border-red-500');
+
+                if (result.success) {
+                    boletinAlert.classList.add('bg-emerald-900/50', 'text-emerald-100', 'border-emerald-500');
+                    boletinAlert.innerHTML = '<i class="ph-fill ph-check-circle mr-2 inline-block align-middle text-lg"></i>' + result.message;
+                    formBoletin.reset();
+                } else {
+                    boletinAlert.classList.add('bg-red-900/50', 'text-red-200', 'border-red-500');
+                    boletinAlert.innerHTML = '<i class="ph-fill ph-warning-circle mr-2 inline-block align-middle text-lg"></i>' + result.message;
+                }
+            } catch (err) {
+                boletinAlert.classList.remove('hidden');
+                boletinAlert.classList.add('bg-red-900/50', 'text-red-200', 'border-red-500');
+                boletinAlert.innerHTML = '<i class="ph-fill ph-warning-circle mr-2 inline-block align-middle text-lg"></i> Error de conexión. Intente nuevamente.';
+            } finally {
+                boletinBtn.disabled = false;
+                boletinBtn.innerHTML = '<i class="ph-bold ph-paper-plane-right"></i> Enviar Solicitud';
+            }
+        });
+    </script>
+</body>
+
+</html>

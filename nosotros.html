@@ -1,0 +1,509 @@
+﻿<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosotros | Centro de Arbitraje-Cámara de Comercio Sullana</title>
+    <link rel="icon" type="image/png" href="img/logo.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700;900&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { DEFAULT: '#064E3B', hover: '#065F46' },
+                        secondary: { DEFAULT: '#D4AF37', hover: '#B49A55' }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Merriweather', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body class="font-sans text-stone-800 bg-stone-50 antialiased flex flex-col min-h-screen">
+
+    <!-- Navegación -->
+    <header id="navbar"
+        class="fixed w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-md shadow-sm border-b border-stone-200">
+        <div class="container mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="img/logo.png" alt="Centro de Arbitraje-Cámara de Comercio Sullana"
+                    class="h-12 w-auto drop-shadow-sm group-hover:scale-105 transition-transform duration-300">
+                <div class="flex flex-col">
+                    <span class="font-serif font-bold text-xl leading-tight text-primary">Centro de Arbitraje</span>
+                    <span class="text-xs font-medium text-stone-500 uppercase tracking-widest">Cámara de Comercio Sullana</span>
+                </div>
+            </a>
+
+            <nav class="hidden lg:flex items-center gap-8 font-medium">
+                <a href="index.html" class="text-stone-600 hover:text-primary transition-colors">Inicio</a>
+                <a href="nosotros.html"
+                    class="text-primary font-bold transition-colors border-b-2 border-primary">Nosotros</a>
+                <a href="servicios.html" class="text-stone-600 hover:text-primary transition-colors">Servicios</a>
+                <a href="publicaciones.html"
+                    class="text-stone-600 hover:text-primary transition-colors">Publicaciones</a>
+                <a href="tarifas.html" class="text-stone-600 hover:text-primary transition-colors">Tarifas</a>
+                <a href="contacto.html"
+                    class="bg-primary text-white px-5 py-2.5 rounded-md hover:bg-primary-hover transition-colors font-semibold shadow-md">Contactar</a>
+            </nav>
+
+            <button id="mobile-menu-btn" class="lg:hidden text-primary text-3xl">
+                <i class="ph ph-list"></i>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-stone-100 absolute w-full shadow-lg">
+            <nav class="flex flex-col p-4 gap-4">
+                <a href="index.html" class="text-stone-600 font-medium">Inicio</a>
+                <a href="nosotros.html" class="text-primary font-bold">Nosotros</a>
+                <a href="servicios.html" class="text-stone-600 font-medium">Servicios</a>
+                <a href="publicaciones.html" class="text-stone-600 font-medium">Publicaciones</a>
+                <a href="tarifas.html" class="text-stone-600 font-medium">Tarifas</a>
+                <a href="contacto.html"
+                    class="bg-primary text-white text-center py-2 rounded-md font-semibold">Contactar</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow pt-20">
+
+        <!-- Header Section -->
+        <section class="bg-primary text-white py-20 relative overflow-hidden">
+            <div
+                class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-10 mix-blend-overlay">
+            </div>
+            <div class="container mx-auto px-6 relative z-10 text-center max-w-3xl fade-in">
+                <h1 class="font-serif text-4xl md:text-5xl font-bold mb-6">Sobre Nosotros</h1>
+                <p class="text-emerald-100 text-lg leading-relaxed">
+                    Somos una institución líder y especializada, comprometida con la administración eficiente,
+                    transparente y ética de los procesos arbitrales.
+                </p>
+            </div>
+        </section>
+
+        <!-- Historia y Valores -->
+        <section class="py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col md:flex-row gap-16 items-center">
+                    <div class="md:w-1/2 fade-in">
+                        <h2 class="font-serif text-3xl md:text-4xl font-bold text-primary mb-6">Nuestra Historia</h2>
+                        <p class="text-stone-600 mb-4 leading-relaxed">
+                            El <strong>Centro de Arbitraje-Cámara de Comercio Sullana</strong> nació con el firme propósito de
+                            descentralizar y optimizar la resolución de controversias civiles y comerciales en el norte
+                            del país. Desde nuestra fundación, nos hemos consolidado como un referente de seguridad
+                            jurídica.
+                        </p>
+                        <p class="text-stone-600 mb-8 leading-relaxed">
+                            Nuestra institución cuenta con el respaldo de destacados profesionales del derecho y un
+                            marco normativo moderno que garantiza que cada laudo emitido cumpla con los más rigurosos
+                            estándares de calidad y justicia.
+                        </p>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
+                            <div
+                                class="bg-stone-50 p-6 rounded-2xl border border-stone-100 shadow-sm hover:shadow-md transition-shadow">
+                                <i class="ph-fill ph-target text-4xl text-secondary mb-4"></i>
+                                <h3 class="font-serif font-bold text-xl text-primary mb-2">Misión</h3>
+                                <p class="text-sm text-stone-600 leading-relaxed">
+                                    Acercar a la ciudadanía y al sector empresarial un servicio de justicia privada,
+                                    rápida, económica y especializada, administrado con integridad.
+                                </p>
+                            </div>
+                            <div
+                                class="bg-stone-50 p-6 rounded-2xl border border-stone-100 shadow-sm hover:shadow-md transition-shadow">
+                                <i class="ph-fill ph-eye text-4xl text-secondary mb-4"></i>
+                                <h3 class="font-serif font-bold text-xl text-primary mb-2">Visión</h3>
+                                <p class="text-sm text-stone-600 leading-relaxed">
+                                    Ser reconocidos a nivel nacional como la institución arbitral de mayor confianza,
+                                    innovación y prestigio jurídico.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="md:w-1/2 w-full fade-in" style="transition-delay: 200ms;">
+                        <div class="grid grid-cols-2 gap-4">
+                            <img src="img/Centro de Arbitraje 3.jpg"
+                                alt="Centro de Arbitraje-Cámara de Comercio Sullana"
+                                class="rounded-3xl shadow-lg w-full h-64 object-cover transform hover:scale-105 transition-transform duration-500" />
+                            <img src="https://images.unsplash.com/photo-1589391886645-d51941baf7fb?auto=format&fit=crop&q=80"
+                                alt="Firma de contrato"
+                                class="rounded-3xl shadow-lg w-full h-64 object-cover mt-8 transform hover:scale-105 transition-transform duration-500" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pilares Institucionales -->
+        <section class="py-24 bg-stone-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-2xl mx-auto mb-16 fade-in">
+                    <h2 class="font-serif text-3xl font-bold text-primary mb-4">Nuestros Pilares</h2>
+                    <div class="w-20 h-1.5 bg-secondary mx-auto rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <div class="text-center p-6 fade-in">
+                        <div
+                            class="w-20 h-20 bg-white rounded-full shadow-md border border-stone-100 flex items-center justify-center mx-auto mb-6 text-primary hover:bg-primary hover:text-secondary transition-colors duration-300">
+                            <i class="ph-fill ph-shield-check text-4xl"></i>
+                        </div>
+                        <h3 class="font-bold text-xl text-stone-800 mb-3">Independencia</h3>
+                        <p class="text-stone-600 text-sm">Garantizamos total autonomía en la administración de cada
+                            expediente.</p>
+                    </div>
+                    <div class="text-center p-6 fade-in" style="transition-delay: 100ms;">
+                        <div
+                            class="w-20 h-20 bg-white rounded-full shadow-md border border-stone-100 flex items-center justify-center mx-auto mb-6 text-primary hover:bg-primary hover:text-secondary transition-colors duration-300">
+                            <i class="ph-fill ph-medal text-4xl"></i>
+                        </div>
+                        <h3 class="font-bold text-xl text-stone-800 mb-3">Excelencia</h3>
+                        <p class="text-stone-600 text-sm">Nómina de árbitros altamente calificados y en constante
+                            actualización.</p>
+                    </div>
+                    <div class="text-center p-6 fade-in" style="transition-delay: 200ms;">
+                        <div
+                            class="w-20 h-20 bg-white rounded-full shadow-md border border-stone-100 flex items-center justify-center mx-auto mb-6 text-primary hover:bg-primary hover:text-secondary transition-colors duration-300">
+                            <i class="ph-fill ph-lightning text-4xl"></i>
+                        </div>
+                        <h3 class="font-bold text-xl text-stone-800 mb-3">Eficacia</h3>
+                        <p class="text-stone-600 text-sm">Procesos ágiles apoyados en tecnología y plataformas digitales
+                            seguras.</p>
+                    </div>
+                    <div class="text-center p-6 fade-in" style="transition-delay: 300ms;">
+                        <div
+                            class="w-20 h-20 bg-white rounded-full shadow-md border border-stone-100 flex items-center justify-center mx-auto mb-6 text-primary hover:bg-primary hover:text-secondary transition-colors duration-300">
+                            <i class="ph-fill ph-magnifying-glass text-4xl"></i>
+                        </div>
+                        <h3 class="font-bold text-xl text-stone-800 mb-3">Transparencia</h3>
+                        <p class="text-stone-600 text-sm">Aranceles claros y predictibilidad en la gestión de costos
+                            administrativos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Consejo Superior de Arbitraje -->
+        <section class="py-24 bg-white border-t border-stone-200">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-2xl mx-auto mb-16 fade-in">
+                    <h2 class="font-serif text-3xl md:text-4xl font-bold text-primary mb-4">Consejo Superior de
+                        Arbitraje</h2>
+                    <div class="w-20 h-1.5 bg-secondary mx-auto rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+
+                    <!-- Tarjeta 1 -->
+                    <div
+                        class="bg-white p-8 rounded-3xl shadow-sm border border-stone-100 hover:shadow-xl transition-all duration-300 flex flex-col items-center text-center fade-in group">
+                        <div
+                            class="w-32 h-32 rounded-full border border-primary p-1 mb-6 group-hover:border-secondary transition-colors duration-300">
+                            <div
+                                class="w-full h-full rounded-full bg-stone-100 flex items-center justify-center overflow-hidden">
+                                <img src="img/EBERT RODRIGUEZ.jpg" alt="Ebert Rodríguez Torres"
+                                    class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <h3 class="font-bold text-primary text-lg mb-3">Ebert Rodríguez Torres</h3>
+                        <span
+                            class="bg-emerald-50 text-emerald-800 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider inline-block">Presidente</span>
+                    </div>
+
+                    <!-- Tarjeta 2 -->
+                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-stone-100 hover:shadow-xl transition-all duration-300 flex flex-col items-center text-center fade-in group"
+                        style="transition-delay: 100ms;">
+                        <div
+                            class="w-32 h-32 rounded-full border border-primary p-1 mb-6 group-hover:border-secondary transition-colors duration-300">
+                            <div
+                                class="w-full h-full rounded-full bg-stone-100 flex items-center justify-center overflow-hidden">
+                                <img src="img/JOSE LUIS BACA .jpg" alt="José Luis Baca Cruz"
+                                    class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <h3 class="font-bold text-primary text-lg mb-3">José Luis Baca Cruz</h3>
+                        <span
+                            class="bg-emerald-50 text-emerald-800 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider inline-block">Vicepresidente</span>
+                    </div>
+
+                    <!-- Tarjeta 3 -->
+                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-stone-100 hover:shadow-xl transition-all duration-300 flex flex-col items-center text-center fade-in group"
+                        style="transition-delay: 200ms;">
+                        <div
+                            class="w-32 h-32 rounded-full border border-primary p-1 mb-6 group-hover:border-secondary transition-colors duration-300">
+                            <div
+                                class="w-full h-full rounded-full bg-stone-100 flex items-center justify-center overflow-hidden">
+                                <img src="img/MARIO ACHA.jpg" alt="Mario Martín Acha Ramírez"
+                                    class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <h3 class="font-bold text-primary text-lg mb-3">Mario Martín Acha Ramírez</h3>
+                        <span
+                            class="bg-emerald-50 text-emerald-800 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider inline-block">Consejero</span>
+                    </div>
+
+                    <!-- Tarjeta 4 -->
+                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-stone-100 hover:shadow-xl transition-all duration-300 flex flex-col items-center text-center fade-in group"
+                        style="transition-delay: 300ms;">
+                        <div
+                            class="w-32 h-32 rounded-full border border-primary p-1 mb-6 group-hover:border-secondary transition-colors duration-300">
+                            <div
+                                class="w-full h-full rounded-full bg-stone-100 flex items-center justify-center overflow-hidden">
+                                <img src="img/Juan agurto.jpg" alt="Juan Agurto Correa"
+                                    class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <h3 class="font-bold text-primary text-lg mb-3">Juan Agurto Correa</h3>
+                        <span
+                            class="bg-emerald-50 text-emerald-800 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider inline-block">Consejero</span>
+                    </div>
+
+                    <!-- Tarjeta 5 -->
+                    <div
+                        class="bg-white p-8 rounded-3xl shadow-sm border border-stone-100 hover:shadow-xl transition-all duration-300 flex flex-col items-center text-center fade-in group lg:col-start-2">
+                        <div
+                            class="w-32 h-32 rounded-full border border-primary p-1 mb-6 group-hover:border-secondary transition-colors duration-300">
+                            <div
+                                class="w-full h-full rounded-full bg-stone-100 flex items-center justify-center overflow-hidden">
+                                <img src="img/waldir.jpg" alt="Waldir Emiliano Sánchez Rangel"
+                                    class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <h3 class="font-bold text-primary text-lg mb-3">Waldir Emiliano Sánchez Rangel</h3>
+                        <span
+                            class="bg-emerald-50 text-emerald-800 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider inline-block">Consejero</span>
+                    </div>
+
+                    <!-- Tarjeta 6 -->
+                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-stone-100 hover:shadow-xl transition-all duration-300 flex flex-col items-center text-center fade-in group"
+                        style="transition-delay: 100ms;">
+                        <div
+                            class="w-32 h-32 rounded-full border border-primary p-1 mb-6 group-hover:border-secondary transition-colors duration-300">
+                            <div
+                                class="w-full h-full rounded-full bg-stone-100 flex items-center justify-center overflow-hidden">
+                                <img src="img/Jorge Luis Abad Tineo.jpg" alt="Ing. Jorge Luis Abad Tineo"
+                                    class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <h3 class="font-bold text-primary text-lg mb-3">Ing. Jorge Luis Abad Tineo</h3>
+                        <span
+                            class="bg-emerald-50 text-emerald-800 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider inline-block">Consejero</span>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!-- ═══════════════════════════════════════════════════════
+             DOCUMENTOS INSTITUCIONALES
+        ════════════════════════════════════════════════════════ -->
+        <section class="py-24 bg-stone-50 border-t border-stone-200">
+            <div class="container mx-auto px-6">
+
+                <!-- Encabezado de sección -->
+                <div class="text-center max-w-2xl mx-auto mb-16 fade-in">
+                    <div
+                        class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary/10 text-secondary mb-5 border border-secondary/30 text-sm font-semibold">
+                        <i class="ph-fill ph-files"></i> Transparencia Institucional
+                    </div>
+                    <h2 class="font-serif text-3xl md:text-4xl font-bold text-primary mb-4">Documentos Institucionales
+                    </h2>
+                    <div class="w-20 h-1.5 bg-secondary mx-auto rounded-full mb-5"></div>
+                    <p class="text-stone-500 text-lg leading-relaxed">Acceda a nuestros documentos oficiales de
+                        gobierno, ética y personal. Todos disponibles para su consulta y descarga.</p>
+                </div>
+
+                <!-- GRUPO 1: Marco Legal -->
+                <div class="mb-12 fade-in">
+                    <div class="flex items-center gap-3 mb-7">
+                        <div class="w-9 h-9 rounded-xl bg-primary flex items-center justify-center shrink-0">
+                            <i class="ph-fill ph-scales text-secondary text-lg"></i>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-primary">Marco Legal</h3>
+                        <div class="flex-1 h-px bg-stone-200"></div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+                        <a href="documento.php?file=estatuto&view=1" target="_blank"
+                            class="group flex items-center gap-4 bg-white border border-stone-200 rounded-2xl p-5 hover:shadow-lg hover:border-primary/40 hover:-translate-y-0.5 transition-all duration-300">
+                            <div
+                                class="w-12 h-12 shrink-0 bg-primary/5 rounded-xl flex items-center justify-center group-hover:bg-primary transition-colors duration-300">
+                                <i
+                                    class="ph-fill ph-book-bookmark text-2xl text-primary group-hover:text-secondary transition-colors duration-300"></i>
+                            </div>
+                            <div class="min-w-0">
+                                <p class="font-bold text-stone-800 group-hover:text-primary transition-colors">Estatuto
+                                    del Centro</p>
+                                <p class="text-stone-400 text-sm mt-0.5">Documento fundacional de la institución</p>
+                            </div>
+                            <i
+                                class="ph-bold ph-arrow-up-right text-stone-300 group-hover:text-primary ml-auto shrink-0 transition-colors"></i>
+                        </a>
+
+                        <a href="documento.php?file=codigo_etica&view=1" target="_blank"
+                            class="group flex items-center gap-4 bg-white border border-stone-200 rounded-2xl p-5 hover:shadow-lg hover:border-primary/40 hover:-translate-y-0.5 transition-all duration-300">
+                            <div
+                                class="w-12 h-12 shrink-0 bg-primary/5 rounded-xl flex items-center justify-center group-hover:bg-primary transition-colors duration-300">
+                                <i
+                                    class="ph-fill ph-hand-heart text-2xl text-primary group-hover:text-secondary transition-colors duration-300"></i>
+                            </div>
+                            <div class="min-w-0">
+                                <p class="font-bold text-stone-800 group-hover:text-primary transition-colors">Código de
+                                    Ética</p>
+                                <p class="text-stone-400 text-sm mt-0.5">Principios y normas de conducta</p>
+                            </div>
+                            <i
+                                class="ph-bold ph-arrow-up-right text-stone-300 group-hover:text-primary ml-auto shrink-0 transition-colors"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <!-- GRUPO 2: Nóminas y Requisitos -->
+                <div class="fade-in" style="transition-delay: 150ms;">
+                    <div class="flex items-center gap-3 mb-7">
+                        <div class="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center shrink-0">
+                            <i class="ph-fill ph-users text-primary text-lg"></i>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-primary">Nóminas y Requisitos</h3>
+                        <div class="flex-1 h-px bg-stone-200"></div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+
+                        <a href="documento.php?file=nomina_arbitros&view=1" target="_blank"
+                            class="group flex items-center gap-4 bg-white border border-stone-200 rounded-2xl p-5 hover:shadow-lg hover:border-secondary/50 hover:-translate-y-0.5 transition-all duration-300">
+                            <div
+                                class="w-12 h-12 shrink-0 bg-secondary/10 rounded-xl flex items-center justify-center group-hover:bg-secondary transition-colors duration-300">
+                                <i
+                                    class="ph-fill ph-identification-card text-2xl text-secondary group-hover:text-primary transition-colors duration-300"></i>
+                            </div>
+                            <div class="min-w-0 flex-1">
+                                <p
+                                    class="font-bold text-stone-800 group-hover:text-primary transition-colors leading-tight">
+                                    Nómina de Árbitros</p>
+                                <p class="text-stone-400 text-sm mt-0.5">Árbitros acreditados</p>
+                            </div>
+                            <i
+                                class="ph-bold ph-arrow-up-right text-stone-300 group-hover:text-primary shrink-0 transition-colors"></i>
+                        </a>
+
+                        <a href="documento.php?file=nomina_secretarios&view=1" target="_blank"
+                            class="group flex items-center gap-4 bg-white border border-stone-200 rounded-2xl p-5 hover:shadow-lg hover:border-secondary/50 hover:-translate-y-0.5 transition-all duration-300">
+                            <div
+                                class="w-12 h-12 shrink-0 bg-secondary/10 rounded-xl flex items-center justify-center group-hover:bg-secondary transition-colors duration-300">
+                                <i
+                                    class="ph-fill ph-user-list text-2xl text-secondary group-hover:text-primary transition-colors duration-300"></i>
+                            </div>
+                            <div class="min-w-0 flex-1">
+                                <p
+                                    class="font-bold text-stone-800 group-hover:text-primary transition-colors leading-tight">
+                                    Nómina de Secretarios</p>
+                                <p class="text-stone-400 text-sm mt-0.5">Secretarios arbitrales</p>
+                            </div>
+                            <i
+                                class="ph-bold ph-arrow-up-right text-stone-300 group-hover:text-primary shrink-0 transition-colors"></i>
+                        </a>
+
+                        <a href="documento.php?file=requisitos_arbitros&view=1" target="_blank"
+                            class="group flex items-center gap-4 bg-white border border-stone-200 rounded-2xl p-5 hover:shadow-lg hover:border-secondary/50 hover:-translate-y-0.5 transition-all duration-300">
+                            <div
+                                class="w-12 h-12 shrink-0 bg-secondary/10 rounded-xl flex items-center justify-center group-hover:bg-secondary transition-colors duration-300">
+                                <i
+                                    class="ph-fill ph-clipboard-text text-2xl text-secondary group-hover:text-primary transition-colors duration-300"></i>
+                            </div>
+                            <div class="min-w-0 flex-1">
+                                <p
+                                    class="font-bold text-stone-800 group-hover:text-primary transition-colors leading-tight">
+                                    Requisitos para ser Árbitro</p>
+                                <p class="text-stone-400 text-sm mt-0.5">Perfil y condiciones</p>
+                            </div>
+                            <i
+                                class="ph-bold ph-arrow-up-right text-stone-300 group-hover:text-primary shrink-0 transition-colors"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-stone-900 text-stone-300 py-12 border-t-4 border-secondary mt-auto">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex items-center gap-4">
+                    <div class="bg-white p-1 rounded-lg shadow-sm">
+                        <img src="img/logo.png" alt="Centro de Arbitraje-Cámara de Comercio Sullana" class="h-10 w-auto object-contain">
+                    </div>
+                    <div>
+                        <span class="font-serif font-bold text-xl text-white block">Centro de Arbitraje de
+                            Sullana</span>
+                        <span class="text-xs tracking-widest uppercase text-stone-500">Justicia ⬢ Equidad ⬢
+                            Verdad</span>
+                    </div>
+                </div>
+                <div class="text-sm text-center md:text-right">
+                    <p>&copy;
+                        <script>document.write(new Date().getFullYear())</script> Centro de Arbitraje de
+                        Sullana.<br>Todos los derechos reservados.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lógica JavaScript Común -->
+    <script>
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) navbar.classList.add('py-2', 'shadow-md');
+            else navbar.classList.remove('py-2', 'shadow-md');
+        });
+
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+</body>
+
+</html>

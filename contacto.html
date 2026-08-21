@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto | Centro de Arbitraje-Cámara de Comercio Sullana</title>
+    <link rel="icon" type="image/png" href="img/logo.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { DEFAULT: '#064E3B', hover: '#065F46' },
+                        secondary: { DEFAULT: '#D4AF37', hover: '#B49A55' }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Merriweather', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body class="font-sans text-stone-800 bg-stone-50 antialiased flex flex-col min-h-screen">
+
+    <!-- Navegación -->
+    <header id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-md shadow-sm border-b border-stone-200">
+        <div class="container mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="img/logo.png" alt="Centro de Arbitraje-Cámara de Comercio Sullana" class="h-12 w-auto drop-shadow-sm group-hover:scale-105 transition-transform duration-300">
+                <div class="flex flex-col">
+                    <span class="font-serif font-bold text-xl leading-tight text-primary">Centro de Arbitraje</span>
+                    <span class="text-xs font-medium text-stone-500 uppercase tracking-widest">Cámara de Comercio Sullana</span>
+                </div>
+            </a>
+            
+            <nav class="hidden lg:flex items-center gap-8 font-medium">
+                <a href="index.html" class="text-stone-600 hover:text-primary transition-colors">Inicio</a>
+                <a href="nosotros.html" class="text-stone-600 hover:text-primary transition-colors">Nosotros</a>
+                <a href="servicios.html" class="text-stone-600 hover:text-primary transition-colors">Servicios</a>
+                <a href="publicaciones.html" class="text-stone-600 hover:text-primary transition-colors">Publicaciones</a>
+                <a href="tarifas.html" class="text-stone-600 hover:text-primary transition-colors">Tarifas</a>
+                <a href="contacto.html" class="bg-secondary text-primary px-5 py-2.5 rounded-md font-bold shadow-md ring-2 ring-secondary ring-offset-2">Contactar</a>
+            </nav>
+
+            <button id="mobile-menu-btn" class="lg:hidden text-primary text-3xl">
+                <i class="ph ph-list"></i>
+            </button>
+        </div>
+        
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-stone-100 absolute w-full shadow-lg">
+            <nav class="flex flex-col p-4 gap-4">
+                <a href="index.html" class="text-stone-600 font-medium">Inicio</a>
+                <a href="nosotros.html" class="text-stone-600 font-medium">Nosotros</a>
+                <a href="servicios.html" class="text-stone-600 font-medium">Servicios</a>
+                <a href="publicaciones.html" class="text-stone-600 font-medium">Publicaciones</a>
+                <a href="tarifas.html" class="text-stone-600 font-medium">Tarifas</a>
+                <a href="contacto.html" class="bg-primary text-white text-center py-2 rounded-md font-semibold">Contactar</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow pt-20">
+        
+        <!-- Header Section -->
+        <section class="bg-primary text-white py-20 relative overflow-hidden">
+            <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1505664159854-2328109d7224?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-10 mix-blend-overlay"></div>
+            <div class="container mx-auto px-6 relative z-10 text-center max-w-3xl fade-in">
+                <h1 class="font-serif text-4xl md:text-5xl font-bold mb-6">Póngase en Contacto</h1>
+                <p class="text-emerald-100 text-lg leading-relaxed">
+                    Nuestro equipo de especialistas está listo para brindarle orientación personalizada sobre nuestros servicios arbitrales.
+                </p>
+            </div>
+        </section>
+
+        <!-- Sección Contacto y Formulario -->
+        <section class="py-24 bg-stone-50 relative overflow-hidden">
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12">
+                    
+                    <!-- Info Contacto -->
+                    <div class="lg:col-span-1 space-y-8 fade-in">
+                        <div class="flex items-start gap-5 p-6 bg-white rounded-2xl shadow-sm border border-stone-100">
+                            <div class="w-14 h-14 bg-secondary/20 rounded-xl flex items-center justify-center shrink-0">
+                                <i class="ph-fill ph-map-pin text-secondary text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-xl text-primary mb-2">Sede Central</h4>
+                                <a href="https://www.google.com/maps/place/Cámara+de+Comercio,+Producción+y+Turismo+-+Sullana/@-4.8928074,-80.6898185,20z/data=!4m6!3m5!1s0x9035fbc7b75db631:0x716506d26c8687fa!8m2!3d-4.8929187!4d-80.6898146!16s%2Fg%2F1yj4k4b33?authuser=0&entry=ttu&g_ep=EgoyMDI2MDQxNC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="text-stone-600 hover:text-secondary transition-colors">Calle San Martín N.º 1021<br>Sullana, Piura</a>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-5 p-6 bg-white rounded-2xl shadow-sm border border-stone-100">
+                            <div class="w-14 h-14 bg-secondary/20 rounded-xl flex items-center justify-center shrink-0">
+                                <i class="ph-fill ph-envelope-simple text-secondary text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-xl text-primary mb-2">Correo Institucional</h4>
+                                <a href="mailto:camarasullanacentroarbitraje@gmail.com" class="text-stone-600 hover:text-secondary transition-colors break-all">camarasullanacentroarbitraje@gmail.com</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Formulario -->
+                    <div class="lg:col-span-2 fade-in" style="transition-delay: 200ms;">
+                        <div class="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-stone-100 text-stone-800">
+                            <h3 class="font-serif text-2xl font-bold text-primary mb-8 border-b border-stone-100 pb-4">Envíenos un mensaje</h3>
+                            
+                            <!-- Alertas del Formulario -->
+                            <div id="form-alert" class="hidden mb-6 p-4 rounded-xl font-medium border"></div>
+
+                            <form id="contact-form" class="space-y-6">
+                                <div class="grid grid-cols-1 gap-6">
+                                    <div>
+                                        <label for="nombre" class="block text-sm font-bold text-stone-700 mb-2">Nombre Completo *</label>
+                                        <input type="text" id="nombre" name="nombre" required 
+                                            class="w-full px-5 py-3.5 bg-stone-50 border-2 border-stone-200 rounded-xl focus:ring-0 focus:border-secondary focus:bg-white transition-colors" placeholder="Ej. Juan Pérez" />
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="correo" class="block text-sm font-bold text-stone-700 mb-2">Correo Electrónico *</label>
+                                    <input type="email" id="correo" name="correo" required 
+                                        class="w-full px-5 py-3.5 bg-stone-50 border-2 border-stone-200 rounded-xl focus:ring-0 focus:border-secondary focus:bg-white transition-colors" placeholder="ejemplo@empresa.com" />
+                                </div>
+                                <div>
+                                    <label for="mensaje" class="block text-sm font-bold text-stone-700 mb-2">Mensaje / Consulta *</label>
+                                    <textarea id="mensaje" name="mensaje" rows="5" required 
+                                        class="w-full px-5 py-3.5 bg-stone-50 border-2 border-stone-200 rounded-xl focus:ring-0 focus:border-secondary focus:bg-white transition-colors resize-none" placeholder="Describa brevemente su caso o consulta..."></textarea>
+                                </div>
+                                <button type="submit" id="submit-btn" class="w-full py-4 bg-primary text-white font-bold rounded-xl hover:bg-primary-hover transition-colors flex items-center justify-center gap-3 text-lg shadow-lg hover:shadow-xl hover:-translate-y-0.5 duration-200">
+                                    <span>Enviar Mensaje</span>
+                                    <i class="ph-bold ph-paper-plane-right"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-stone-900 text-stone-300 py-12 border-t-4 border-secondary mt-auto">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex items-center gap-4">
+                    <div class="bg-white p-1 rounded-lg shadow-sm">
+                        <img src="img/logo.png" alt="Centro de Arbitraje-Cámara de Comercio Sullana" class="h-10 w-auto object-contain">
+                    </div>
+                    <div>
+                        <span class="font-serif font-bold text-xl text-white block">Centro de Arbitraje-Cámara de Comercio Sullana</span>
+                        <span class="text-xs tracking-widest uppercase text-stone-500">Justicia ⬢ Equidad ⬢ Verdad</span>
+                    </div>
+                </div>
+                <div class="text-sm text-center md:text-right">
+                    <p>&copy; <script>document.write(new Date().getFullYear())</script> Centro de Arbitraje-Cámara de Comercio Sullana.<br>Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lógica JavaScript Común y Formulario -->
+    <script>
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) navbar.classList.add('py-2', 'shadow-md');
+            else navbar.classList.remove('py-2', 'shadow-md');
+        });
+
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Procesamiento del Formulario con AJAX
+        const form = document.getElementById('contact-form');
+        const submitBtn = document.getElementById('submit-btn');
+        const alertBox = document.getElementById('form-alert');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Estado de carga
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="ph ph-spinner animate-spin"></i> Procesando...';
+            alertBox.classList.add('hidden');
+
+            const formData = new FormData(form);
+
+            try {
+                const response = await fetch('procesar_contacto.php', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+
+                alertBox.classList.remove('hidden', 'bg-red-50', 'text-red-800', 'border-red-200');
+                
+                if (result.success) {
+                    alertBox.classList.add('bg-emerald-50', 'text-emerald-800', 'border-emerald-200');
+                    alertBox.innerHTML = '<i class="ph-fill ph-check-circle mr-2 text-xl inline-block align-middle"></i> ' + result.message;
+                    form.reset();
+                } else {
+                    throw new Error(result.message || 'Error desconocido.');
+                }
+            } catch (error) {
+                alertBox.classList.remove('hidden', 'bg-emerald-50', 'text-emerald-800', 'border-emerald-200');
+                alertBox.classList.add('bg-red-50', 'text-red-800', 'border-red-200');
+                alertBox.innerHTML = '<i class="ph-fill ph-warning-circle mr-2 text-xl inline-block align-middle"></i> Ocurrió un error: ' + error.message;
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<span>Enviar Mensaje</span><i class="ph-bold ph-paper-plane-right"></i>';
+            }
+        });
+    </script>
+</body>
+</html>});
+    </script>
+</body>
+</html>script>
+</body>
+</html>

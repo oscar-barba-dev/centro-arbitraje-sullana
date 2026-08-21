@@ -1,0 +1,225 @@
+﻿<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios | Centro de Arbitraje-Cámara de Comercio Sullana</title>
+    <link rel="icon" type="image/png" href="img/logo.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { DEFAULT: '#064E3B', hover: '#065F46' },
+                        secondary: { DEFAULT: '#D4AF37', hover: '#B49A55' }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Merriweather', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body class="font-sans text-stone-800 bg-stone-50 antialiased flex flex-col min-h-screen">
+
+    <!-- Navegación -->
+    <header id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-md shadow-sm border-b border-stone-200">
+        <div class="container mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="img/logo.png" alt="Centro de Arbitraje-Cámara de Comercio Sullana" class="h-12 w-auto drop-shadow-sm group-hover:scale-105 transition-transform duration-300">
+                <div class="flex flex-col">
+                    <span class="font-serif font-bold text-xl leading-tight text-primary">Centro de Arbitraje</span>
+                    <span class="text-xs font-medium text-stone-500 uppercase tracking-widest">Cámara de Comercio Sullana</span>
+                </div>
+            </a>
+            
+            <nav class="hidden lg:flex items-center gap-8 font-medium">
+                <a href="index.html" class="text-stone-600 hover:text-primary transition-colors">Inicio</a>
+                <a href="nosotros.html" class="text-stone-600 hover:text-primary transition-colors">Nosotros</a>
+                <a href="servicios.html" class="text-primary font-bold transition-colors border-b-2 border-primary">Servicios</a>
+                <a href="publicaciones.html" class="text-stone-600 hover:text-primary transition-colors">Publicaciones</a>
+                <a href="tarifas.html" class="text-stone-600 hover:text-primary transition-colors">Tarifas</a>
+                <a href="contacto.html" class="bg-primary text-white px-5 py-2.5 rounded-md hover:bg-primary-hover transition-colors font-semibold shadow-md">Contactar</a>
+            </nav>
+
+            <button id="mobile-menu-btn" class="lg:hidden text-primary text-3xl">
+                <i class="ph ph-list"></i>
+            </button>
+        </div>
+        
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-stone-100 absolute w-full shadow-lg">
+            <nav class="flex flex-col p-4 gap-4">
+                <a href="index.html" class="text-stone-600 font-medium">Inicio</a>
+                <a href="nosotros.html" class="text-stone-600 font-medium">Nosotros</a>
+                <a href="servicios.html" class="text-primary font-bold">Servicios</a>
+                <a href="publicaciones.html" class="text-stone-600 font-medium">Publicaciones</a>
+                <a href="tarifas.html" class="text-stone-600 font-medium">Tarifas</a>
+                <a href="contacto.html" class="bg-primary text-white text-center py-2 rounded-md font-semibold">Contactar</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow pt-20">
+        
+        <!-- Header Section -->
+        <section class="bg-primary text-white py-20 relative overflow-hidden">
+            <div class="container mx-auto px-6 relative z-10 text-center max-w-3xl fade-in">
+                <h1 class="font-serif text-4xl md:text-5xl font-bold mb-6">Nuestros Servicios</h1>
+                <p class="text-emerald-100 text-lg leading-relaxed">
+                    Ofrecemos soluciones eficientes y especializadas para la resolución de controversias, adaptándonos a las necesidades específicas de cada caso.
+                </p>
+            </div>
+        </section>
+
+        <!-- Servicios Detallados -->
+        <section class="py-24 bg-stone-50">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Servicio 1 -->
+                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-stone-100 hover:shadow-xl transition-all duration-300 group fade-in">
+                        <div class="w-16 h-16 bg-secondary/10 rounded-2xl flex items-center justify-center mb-6 text-secondary group-hover:bg-secondary group-hover:text-white transition-colors">
+                            <i class="ph-fill ph-buildings text-3xl"></i>
+                        </div>
+                        <h3 class="font-serif text-2xl font-bold text-primary mb-4">Arbitraje Institucional</h3>
+                        <p class="text-stone-600 mb-6 leading-relaxed">
+                            Administración integral del proceso arbitral bajo nuestro propio Reglamento de Arbitraje. Garantizamos un soporte logístico, tecnológico y secretarial impecable desde la solicitud hasta la emisión del laudo.
+                        </p>
+                        <ul class="text-sm text-stone-600 space-y-3 mb-8">
+                            <li class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-secondary"></i> Control de plazos estricto</li>
+                            <li class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-secondary"></i> Transparencia en aranceles</li>
+                            <li class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-secondary"></i> Plataforma virtual de expedientes</li>
+                        </ul>
+                    </div>
+
+                    <!-- Servicio 2 -->
+                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-stone-100 hover:shadow-xl transition-all duration-300 group fade-in" style="transition-delay: 100ms;">
+                        <div class="w-16 h-16 bg-secondary/10 rounded-2xl flex items-center justify-center mb-6 text-secondary group-hover:bg-secondary group-hover:text-white transition-colors">
+                            <i class="ph-fill ph-gavel text-3xl"></i>
+                        </div>
+                        <h3 class="font-serif text-2xl font-bold text-primary mb-4">Arbitraje Ad Hoc</h3>
+                        <p class="text-stone-600 mb-6 leading-relaxed">
+                            Brindamos servicios de apoyo y designación de árbitros para aquellos procesos donde las partes han decidido no someterse a la administración completa de una institución.
+                        </p>
+                        <ul class="text-sm text-stone-600 space-y-3 mb-8">
+                            <li class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-secondary"></i> Designación residual</li>
+                            <li class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-secondary"></i> Resolución de recusaciones</li>
+                            <li class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-secondary"></i> Alquiler de salas de audiencias</li>
+                        </ul>
+                    </div>
+
+                    <!-- Servicio 3 -->
+                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-stone-100 hover:shadow-xl transition-all duration-300 group fade-in" style="transition-delay: 200ms;">
+                        <div class="w-16 h-16 bg-secondary/10 rounded-2xl flex items-center justify-center mb-6 text-secondary group-hover:bg-secondary group-hover:text-white transition-colors">
+                            <i class="ph-fill ph-handshake text-3xl"></i>
+                        </div>
+                        <h3 class="font-serif text-2xl font-bold text-primary mb-4">Juntas de Resolución (JRD)</h3>
+                        <p class="text-stone-600 mb-6 leading-relaxed">
+                            Mecanismo preventivo ideal para contratos de obra (pública o privada). La JRD acompaña la ejecución del proyecto para resolver controversias en tiempo real y evitar paralizaciones.
+                        </p>
+                        <ul class="text-sm text-stone-600 space-y-3 mb-8">
+                            <li class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-secondary"></i> Prevención de conflictos</li>
+                            <li class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-secondary"></i> Decisiones vinculantes inmediatas</li>
+                            <li class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-secondary"></i> Especialistas técnicos y legales</li>
+                        </ul>
+                    </div>
+
+                    <!-- Servicio 4 -->
+                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-stone-100 hover:shadow-xl transition-all duration-300 group fade-in">
+                        <div class="w-16 h-16 bg-secondary/10 rounded-2xl flex items-center justify-center mb-6 text-secondary group-hover:bg-secondary group-hover:text-white transition-colors">
+                            <i class="ph-fill ph-users text-3xl"></i>
+                        </div>
+                        <h3 class="font-serif text-2xl font-bold text-primary mb-4">Nómina de Árbitros</h3>
+                        <p class="text-stone-600 leading-relaxed">
+                            Mantenemos un registro público y actualizado de profesionales de destacada trayectoria, ética intachable y especialización en diversas ramas del derecho.
+                        </p>
+                    </div>
+
+                    <!-- Servicio 5 -->
+                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-stone-100 hover:shadow-xl transition-all duration-300 group fade-in" style="transition-delay: 100ms;">
+                        <div class="w-16 h-16 bg-secondary/10 rounded-2xl flex items-center justify-center mb-6 text-secondary group-hover:bg-secondary group-hover:text-white transition-colors">
+                            <i class="ph-fill ph-briefcase text-3xl"></i>
+                        </div>
+                        <h3 class="font-serif text-2xl font-bold text-primary mb-4">Contrataciones con el Estado</h3>
+                        <p class="text-stone-600 leading-relaxed">
+                            Alta especialización en la resolución de controversias derivadas de la Ley de Contrataciones del Estado, asegurando la debida aplicación de la normativa pública.
+                        </p>
+                    </div>
+
+                    <!-- CTA Box -->
+                    <div class="bg-gradient-to-br from-primary to-primary-hover p-8 rounded-3xl shadow-lg text-white flex flex-col justify-center items-center text-center fade-in" style="transition-delay: 200ms;">
+                        <i class="ph-fill ph-file-text text-5xl text-secondary mb-4"></i>
+                        <h3 class="font-serif text-2xl font-bold mb-4">¿Necesita iniciar un trámite?</h3>
+                        <p class="text-emerald-100 mb-8">
+                            Descargue nuestros reglamentos o contacte con nuestra secretaría general para recibir orientación.
+                        </p>
+                        <a href="contacto.html" class="bg-secondary text-primary px-8 py-3.5 rounded-xl font-bold hover:bg-secondary-hover transition-colors shadow-md hover:-translate-y-1 block w-full">
+                            Contactar Asesor
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-stone-900 text-stone-300 py-12 border-t-4 border-secondary mt-auto">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex items-center gap-4">
+                    <div class="bg-white p-1 rounded-lg shadow-sm">
+                        <img src="img/logo.png" alt="Centro de Arbitraje-Cámara de Comercio Sullana" class="h-10 w-auto object-contain">
+                    </div>
+                    <div>
+                        <span class="font-serif font-bold text-xl text-white block">Centro de Arbitraje-Cámara de Comercio Sullana</span>
+                        <span class="text-xs tracking-widest uppercase text-stone-500">Justicia ⬢ Equidad ⬢ Verdad</span>
+                    </div>
+                </div>
+                <div class="text-sm text-center md:text-right">
+                    <p>&copy; <script>document.write(new Date().getFullYear())</script> Centro de Arbitraje-Cámara de Comercio Sullana.<br>Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lógica JavaScript Común -->
+    <script>
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) navbar.classList.add('py-2', 'shadow-md');
+            else navbar.classList.remove('py-2', 'shadow-md');
+        });
+
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

@@ -1,0 +1,673 @@
+﻿<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarifas | Centro de Arbitraje-Cámara de Comercio Sullana</title>
+    <link rel="icon" type="image/png" href="img/logo.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { DEFAULT: '#064E3B', hover: '#065F46' },
+                        secondary: { DEFAULT: '#D4AF37', hover: '#B49A55' }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Merriweather', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        .transition-height { transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out, margin 0.3s ease-in-out; }
+    </style>
+</head>
+<body class="font-sans text-stone-800 bg-stone-50 antialiased flex flex-col min-h-screen">
+
+    <!-- Navegación -->
+    <header id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-md shadow-sm border-b border-stone-200">
+        <div class="container mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="img/logo.png" alt="Centro de Arbitraje-Cámara de Comercio Sullana" class="h-12 w-auto drop-shadow-sm group-hover:scale-105 transition-transform duration-300">
+                <div class="flex flex-col">
+                    <span class="font-serif font-bold text-xl leading-tight text-primary">Centro de Arbitraje</span>
+                    <span class="text-xs font-medium text-stone-500 uppercase tracking-widest">Cámara de Comercio Sullana</span>
+                </div>
+            </a>
+            
+            <nav class="hidden lg:flex items-center gap-8 font-medium">
+                <a href="index.html" class="text-stone-600 hover:text-primary transition-colors">Inicio</a>
+                <a href="nosotros.html" class="text-stone-600 hover:text-primary transition-colors">Nosotros</a>
+                <a href="servicios.html" class="text-stone-600 hover:text-primary transition-colors">Servicios</a>
+                <a href="publicaciones.html" class="text-stone-600 hover:text-primary transition-colors">Publicaciones</a>
+                <a href="tarifas.html" class="text-primary font-bold transition-colors border-b-2 border-primary">Tarifas</a>
+                <a href="contacto.html" class="bg-primary text-white px-5 py-2.5 rounded-md hover:bg-primary-hover transition-colors font-semibold shadow-md">Contactar</a>
+            </nav>
+
+            <button id="mobile-menu-btn" class="lg:hidden text-primary text-3xl">
+                <i class="ph ph-list"></i>
+            </button>
+        </div>
+        
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-stone-100 absolute w-full shadow-lg">
+            <nav class="flex flex-col p-4 gap-4">
+                <a href="index.html" class="text-stone-600 font-medium">Inicio</a>
+                <a href="nosotros.html" class="text-stone-600 font-medium">Nosotros</a>
+                <a href="servicios.html" class="text-stone-600 font-medium">Servicios</a>
+                <a href="publicaciones.html" class="text-stone-600 font-medium">Publicaciones</a>
+                <a href="tarifas.html" class="text-primary font-bold">Tarifas</a>
+                <a href="contacto.html" class="bg-primary text-white text-center py-2 rounded-md font-semibold">Contactar</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow pt-20">
+        
+        <!-- Sección Tarifas -->
+        <section class="w-full bg-stone-50">
+            <!-- Hero Banner -->
+            <div class="relative w-full py-24 bg-stone-900 flex items-center justify-center overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-r from-primary/90 to-stone-900/80 z-10"></div>
+                <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-40"></div>
+                
+                <div class="container mx-auto px-6 relative z-20">
+                    <h1 class="font-serif text-5xl md:text-6xl font-bold text-white mb-4 text-left">Tarifas</h1>
+                    <p class="text-emerald-100 text-lg md:text-xl max-w-2xl text-left">Conozca nuestra estructura de costos y tasas administrativas para los diferentes tipos de arbitraje.</p>
+                </div>
+            </div>
+
+            <!-- Botón de Anclaje -->
+            <div class="w-full py-10 flex justify-center border-b border-stone-200">
+                <a href="#calculadora" class="inline-flex items-center gap-3 bg-primary text-white px-8 py-4 rounded-lg hover:bg-primary-hover transition-colors font-bold shadow-lg shadow-primary/20">
+                    <i class="ph ph-calculator text-2xl text-secondary"></i>
+                    Calculadora de Gastos Arbitrales
+                    <i class="ph-bold ph-arrow-down ml-1"></i>
+                </a>
+            </div>
+
+            <!-- Contenido Acordeones -->
+            <div class="container mx-auto px-6 py-16 max-w-4xl fade-in">
+                <div class="space-y-4">
+                    
+                    <!-- Acordeón 1: Tasas de Presentación -->
+                    <details class="group bg-white rounded-xl shadow-sm border border-stone-200 overflow-hidden" open>
+                        <summary class="flex items-center cursor-pointer p-5 bg-stone-100 hover:bg-emerald-50 transition-colors list-none [&::-webkit-details-marker]:hidden">
+                            <span class="mr-4 text-primary transition-transform duration-300 group-open:rotate-90">
+                                <i class="ph-bold ph-caret-right text-xl"></i>
+                            </span>
+                            <h3 class="font-serif font-bold text-xl text-primary">Tasas de Presentación</h3>
+                        </summary>
+                        <div class="p-6 border-t border-stone-100 bg-white">
+                            <div class="overflow-x-auto rounded-lg border border-stone-200">
+                                <table class="w-full text-left border-collapse min-w-max">
+                                    <thead>
+                                        <tr class="bg-stone-800 text-white">
+                                            <th class="py-4 px-6 font-semibold">Tasa</th>
+                                            <th class="py-4 px-6 font-semibold w-48 text-right">Monto</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Sub-encabezado -->
+                                        <tr class="bg-stone-100 border-b border-stone-200">
+                                            <td colspan="2" class="py-3 px-6 font-bold text-stone-700 uppercase tracking-wider text-sm">Arbitraje Nacional</td>
+                                        </tr>
+                                        <tr class="border-b border-stone-100 hover:bg-stone-50 transition-colors">
+                                            <td class="py-4 px-6 text-stone-700">Tasa de presentación para procesos de cuantía determinada</td>
+                                            <td class="py-4 px-6 text-stone-800 font-semibold text-right">S/ 500.00</td>
+                                        </tr>
+                                        <tr class="border-b border-stone-100 hover:bg-stone-50 transition-colors">
+                                            <td class="py-4 px-6 text-stone-700">Tasa de presentación para procesos de cuantía indeterminada</td>
+                                            <td class="py-4 px-6 text-stone-800 font-semibold text-right">S/ 800.00</td>
+                                        </tr>
+                                        
+                                        <!-- Sub-encabezado -->
+                                        <tr class="bg-stone-100 border-b border-stone-200">
+                                            <td colspan="2" class="py-3 px-6 font-bold text-stone-700 uppercase tracking-wider text-sm">Arbitraje Internacional</td>
+                                        </tr>
+                                        <tr class="border-b border-stone-100 hover:bg-stone-50 transition-colors">
+                                            <td class="py-4 px-6 text-stone-700">Tasa de presentación - Caso General</td>
+                                            <td class="py-4 px-6 text-stone-800 font-semibold text-right">$ 300.00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </details>
+
+                    <!-- Acordeón 2: Gastos Administrativos -->
+                    <details class="group bg-white rounded-xl shadow-sm border border-stone-200 overflow-hidden">
+                        <summary class="flex items-center cursor-pointer p-5 bg-stone-100 hover:bg-emerald-50 transition-colors list-none [&::-webkit-details-marker]:hidden">
+                            <span class="mr-4 text-primary transition-transform duration-300 group-open:rotate-90">
+                                <i class="ph-bold ph-caret-right text-xl"></i>
+                            </span>
+                            <h3 class="font-serif font-bold text-xl text-primary">Gastos Administrativos de Secretaría Arbitral</h3>
+                        </summary>
+                        <div class="p-6 border-t border-stone-100 bg-white">
+                            <p class="text-stone-600 mb-5">Los gastos administrativos remuneran las actividades de la Secretaría Arbitral y la gestión del Centro durante todo el proceso. Se calculan en base a la cuantía en disputa (sin IGV).</p>
+                            <div class="overflow-x-auto rounded-lg border border-stone-200">
+                                <table class="w-full text-left border-collapse min-w-max">
+                                    <thead>
+                                        <tr class="bg-stone-800 text-white">
+                                            <th class="py-3 px-5 font-semibold">Cuantía</th>
+                                            <th class="py-3 px-5 font-semibold text-center">%</th>
+                                            <th class="py-3 px-5 font-semibold">Regla</th>
+                                            <th class="py-3 px-5 font-semibold text-right">Máximo S/ (sin IGV)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="border-b border-stone-100 hover:bg-stone-50">
+                                            <td class="py-3 px-5 text-stone-700">Hasta S/. 36,000</td>
+                                            <td class="py-3 px-5 text-center">—</td>
+                                            <td class="py-3 px-5 text-stone-600 text-sm">—</td>
+                                            <td class="py-3 px-5 font-semibold text-right">1,793</td>
+                                        </tr>
+                                        <tr class="border-b border-stone-100 hover:bg-stone-50 bg-stone-50/50">
+                                            <td class="py-3 px-5 text-stone-700">De S/. 36,001 a S/. 72,000</td>
+                                            <td class="py-3 px-5 text-center">2.66%</td>
+                                            <td class="py-3 px-5 text-stone-600 text-sm">S/ 1,793 + 2.66% sobre el excedente de S/ 36,000</td>
+                                            <td class="py-3 px-5 font-semibold text-right">2,749</td>
+                                        </tr>
+                                        <tr class="border-b border-stone-100 hover:bg-stone-50">
+                                            <td class="py-3 px-5 text-stone-700">De S/. 72,001 a S/. 108,000</td>
+                                            <td class="py-3 px-5 text-center">2.19%</td>
+                                            <td class="py-3 px-5 text-stone-600 text-sm">S/ 2,749 + 2.19% sobre el excedente de S/ 72,000</td>
+                                            <td class="py-3 px-5 font-semibold text-right">3,536</td>
+                                        </tr>
+                                        <tr class="border-b border-stone-100 hover:bg-stone-50 bg-stone-50/50">
+                                            <td class="py-3 px-5 text-stone-700">De S/. 108,001 a S/. 180,000</td>
+                                            <td class="py-3 px-5 text-center">1.21%</td>
+                                            <td class="py-3 px-5 text-stone-600 text-sm">S/ 3,536 + 1.21% sobre el excedente de S/ 108,000</td>
+                                            <td class="py-3 px-5 font-semibold text-right">4,407</td>
+                                        </tr>
+                                        <tr class="border-b border-stone-100 hover:bg-stone-50">
+                                            <td class="py-3 px-5 text-stone-700">De S/. 180,001 a S/. 360,000</td>
+                                            <td class="py-3 px-5 text-center">0.71%</td>
+                                            <td class="py-3 px-5 text-stone-600 text-sm">S/ 4,407 + 0.71% sobre el excedente de S/ 180,000</td>
+                                            <td class="py-3 px-5 font-semibold text-right">5,689</td>
+                                        </tr>
+                                        <tr class="border-b border-stone-100 hover:bg-stone-50 bg-stone-50/50">
+                                            <td class="py-3 px-5 text-stone-700">De S/. 360,001 a S/. 1,800,000</td>
+                                            <td class="py-3 px-5 text-center">0.42%</td>
+                                            <td class="py-3 px-5 text-stone-600 text-sm">S/ 5,689 + 0.42% sobre el excedente de S/ 360,000</td>
+                                            <td class="py-3 px-5 font-semibold text-right">11,679</td>
+                                        </tr>
+                                        <tr class="border-b border-stone-100 hover:bg-stone-50">
+                                            <td class="py-3 px-5 text-stone-700">De S/. 1,800,001 a S/. 3,600,000</td>
+                                            <td class="py-3 px-5 text-center">0.30%</td>
+                                            <td class="py-3 px-5 text-stone-600 text-sm">S/ 11,679 + 0.30% sobre el excedente de S/ 1,800,000</td>
+                                            <td class="py-3 px-5 font-semibold text-right">17,071</td>
+                                        </tr>
+                                        <tr class="hover:bg-stone-50 bg-stone-50/50">
+                                            <td class="py-3 px-5 text-stone-700">De S/. 3,600,001 a más</td>
+                                            <td class="py-3 px-5 text-center">0.19%</td>
+                                            <td class="py-3 px-5 text-stone-600 text-sm">S/ 17,071 + 0.19% sobre el excedente de S/ 3,600,000</td>
+                                            <td class="py-3 px-5 font-semibold text-right">129,382</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </details>
+
+                    <!-- Acordeón 3: Honorarios del Tribunal Arbitral - Casos Nacionales -->
+                    <details class="group bg-white rounded-xl shadow-sm border border-stone-200 overflow-hidden">
+                        <summary class="flex items-center cursor-pointer p-5 bg-stone-100 hover:bg-emerald-50 transition-colors list-none [&::-webkit-details-marker]:hidden">
+                            <span class="mr-4 text-primary transition-transform duration-300 group-open:rotate-90">
+                                <i class="ph-bold ph-caret-right text-xl"></i>
+                            </span>
+                            <h3 class="font-serif font-bold text-xl text-primary">Honorarios del Árbitro Único — Casos Nacionales</h3>
+                        </summary>
+                        <div class="p-6 border-t border-stone-100 bg-white">
+                            <p class="text-stone-600 mb-5">Los honorarios del árbitro único para casos nacionales se determinan según la escala aprobada por el Centro. En tribunal colegiado (3 árbitros) el monto se multiplica por 3.</p>
+                            <div class="overflow-x-auto rounded-lg border border-stone-200">
+                                <table class="w-full text-left border-collapse min-w-max">
+                                    <thead>
+                                        <tr class="bg-stone-800 text-white">
+                                            <th class="py-3 px-5 font-semibold">Cuantía</th>
+                                            <th class="py-3 px-5 font-semibold text-center">%</th>
+                                            <th class="py-3 px-5 font-semibold">Regla</th>
+                                            <th class="py-3 px-5 font-semibold text-right">Máximo S/ (sin IGV)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="border-b border-stone-100 hover:bg-stone-50">
+                                            <td class="py-3 px-5 text-stone-700">Hasta S/. 36,000</td>
+                                            <td class="py-3 px-5 text-center">—</td>
+                                            <td class="py-3 px-5 text-stone-600 text-sm">—</td>
+                                            <td class="py-3 px-5 font-semibold text-right">3,819</td>
+                                        </tr>
+                                        <tr class="border-b border-stone-100 hover:bg-stone-50 bg-stone-50/50">
+                                            <td class="py-3 px-5 text-stone-700">De S/. 36,001 a S/. 72,000</td>
+                                            <td class="py-3 px-5 text-center">2.50%</td>
+                                            <td class="py-3 px-5 text-stone-600 text-sm">S/ 3,819 + 2.50% sobre el excedente de S/ 36,000</td>
+                                            <td class="py-3 px-5 font-semibold text-right">4,719</td>
+                                        </tr>
+                                        <tr class="border-b border-stone-100 hover:bg-stone-50">
+                                            <td class="py-3 px-5 text-stone-700">De S/. 72,001 a S/. 108,000</td>
+                                            <td class="py-3 px-5 text-center">2.89%</td>
+                                            <td class="py-3 px-5 text-stone-600 text-sm">S/ 4,719 + 2.89% sobre el excedente de S/ 72,000</td>
+                                            <td class="py-3 px-5 font-semibold text-right">5,760</td>
+                                        </tr>
+                                        <tr class="border-b border-stone-100 hover:bg-stone-50 bg-stone-50/50">
+                                            <td class="py-3 px-5 text-stone-700">De S/. 108,001 a S/. 180,000</td>
+                                            <td class="py-3 px-5 text-center">1.83%</td>
+                                            <td class="py-3 px-5 text-stone-600 text-sm">S/ 5,760 + 1.83% sobre el excedente de S/ 108,000</td>
+                                            <td class="py-3 px-5 font-semibold text-right">7,080</td>
+                                        </tr>
+                                        <tr class="border-b border-stone-100 hover:bg-stone-50">
+                                            <td class="py-3 px-5 text-stone-700">De S/. 180,001 a S/. 360,000</td>
+                                            <td class="py-3 px-5 text-center">0.80%</td>
+                                            <td class="py-3 px-5 text-stone-600 text-sm">S/ 7,080 + 0.80% sobre el excedente de S/ 180,000</td>
+                                            <td class="py-3 px-5 font-semibold text-right">8,518</td>
+                                        </tr>
+                                        <tr class="border-b border-stone-100 hover:bg-stone-50 bg-stone-50/50">
+                                            <td class="py-3 px-5 text-stone-700">De S/. 360,001 a S/. 1,800,000</td>
+                                            <td class="py-3 px-5 text-center">0.83%</td>
+                                            <td class="py-3 px-5 text-stone-600 text-sm">S/ 8,518 + 0.83% sobre el excedente de S/ 360,000</td>
+                                            <td class="py-3 px-5 font-semibold text-right">20,408</td>
+                                        </tr>
+                                        <tr class="border-b border-stone-100 hover:bg-stone-50">
+                                            <td class="py-3 px-5 text-stone-700">De S/. 1,800,001 a S/. 3,600,000</td>
+                                            <td class="py-3 px-5 text-center">0.54%</td>
+                                            <td class="py-3 px-5 text-stone-600 text-sm">S/ 20,408 + 0.54% sobre el excedente de S/ 1,800,000</td>
+                                            <td class="py-3 px-5 font-semibold text-right">30,156</td>
+                                        </tr>
+                                        <tr class="hover:bg-stone-50 bg-stone-50/50">
+                                            <td class="py-3 px-5 text-stone-700">De S/. 3,600,001 a más</td>
+                                            <td class="py-3 px-5 text-center">0.31%</td>
+                                            <td class="py-3 px-5 text-stone-600 text-sm">S/ 30,156 + 0.31% sobre el excedente de S/ 3,600,000</td>
+                                            <td class="py-3 px-5 font-semibold text-right">151,011</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </details>
+                    
+                    <!-- Acordeón 4: Honorarios del Tribunal Arbitral - Casos Internacionales -->
+                    <details class="group bg-white rounded-xl shadow-sm border border-stone-200 overflow-hidden">
+                        <summary class="flex items-center cursor-pointer p-5 bg-stone-100 hover:bg-emerald-50 transition-colors list-none [&::-webkit-details-marker]:hidden">
+                            <span class="mr-4 text-primary transition-transform duration-300 group-open:rotate-90">
+                                <i class="ph-bold ph-caret-right text-xl"></i>
+                            </span>
+                            <h3 class="font-serif font-bold text-xl text-primary">Honorarios del Tribunal Arbitral - Casos Internacionales</h3>
+                        </summary>
+                        <div class="p-6 border-t border-stone-100 bg-white">
+                            <p class="text-stone-600">En los arbitrajes internacionales, los honorarios se fijan en dólares americanos (USD) de acuerdo a las tarifas para controversias internacionales del Centro.</p>
+                        </div>
+                    </details>
+                    
+                    <!-- Acordeón 5: Árbitro de Emergencia -->
+                    <details class="group bg-white rounded-xl shadow-sm border border-stone-200 overflow-hidden">
+                        <summary class="flex items-center cursor-pointer p-5 bg-stone-100 hover:bg-emerald-50 transition-colors list-none [&::-webkit-details-marker]:hidden">
+                            <span class="mr-4 text-primary transition-transform duration-300 group-open:rotate-90">
+                                <i class="ph-bold ph-caret-right text-xl"></i>
+                            </span>
+                            <h3 class="font-serif font-bold text-xl text-primary">Árbitro de Emergencia</h3>
+                        </summary>
+                        <div class="p-6 border-t border-stone-100 bg-white">
+                            <p class="text-stone-600">Las tarifas para la designación de un Árbitro de Emergencia incluyen una tasa especial de presentación y los honorarios correspondientes al procedimiento de emergencia.</p>
+                        </div>
+                    </details>
+                    
+                    <!-- Acordeón 6: Arbitraje Acelerado -->
+                    <details class="group bg-white rounded-xl shadow-sm border border-stone-200 overflow-hidden">
+                        <summary class="flex items-center cursor-pointer p-5 bg-stone-100 hover:bg-emerald-50 transition-colors list-none [&::-webkit-details-marker]:hidden">
+                            <span class="mr-4 text-primary transition-transform duration-300 group-open:rotate-90">
+                                <i class="ph-bold ph-caret-right text-xl"></i>
+                            </span>
+                            <h3 class="font-serif font-bold text-xl text-primary">Arbitraje Acelerado</h3>
+                        </summary>
+                        <div class="p-6 border-t border-stone-100 bg-white">
+                            <p class="text-stone-600">El procedimiento de arbitraje acelerado cuenta con una escala de costos reducida debido a la menor duración del proceso.</p>
+                        </div>
+                    </details>
+
+                </div>
+            </div>
+        </section>
+        
+        <section id="calculadora" class="py-20 bg-stone-50 border-t border-stone-200">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-12 fade-in">
+                    <h1 class="font-serif text-4xl md:text-5xl font-bold text-primary mb-6">Calculadora Dinámica de Aranceles</h1>
+                    <p class="text-stone-600 text-lg">
+                        Obtenga una estimación referencial de los gastos administrativos y honorarios arbitrales aplicables a su controversia.
+                    </p>
+                </div>
+
+                <!-- Componente Calculadora -->
+                <div class="bg-white rounded-3xl shadow-2xl border border-stone-200 overflow-hidden max-w-5xl mx-auto fade-in">
+                    
+                    <!-- Header Calculadora -->
+                    <div class="bg-primary p-8 text-white flex items-center gap-6 relative overflow-hidden">
+                        <div class="absolute -right-10 -top-10 opacity-10">
+                            <i class="ph-fill ph-scales" style="font-size: 200px;"></i>
+                        </div>
+                        <div class="relative z-10 flex items-center gap-5">
+                            <div class="p-4 bg-secondary rounded-2xl shadow-lg">
+                                <i class="ph ph-calculator text-primary text-3xl"></i>
+                            </div>
+                            <div>
+                                <h2 class="font-serif text-3xl font-bold text-white">Simulador de Costos</h2>
+                                <p class="text-emerald-100/80 mt-1 font-medium tracking-wide uppercase text-sm">Tarifario Referencial</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-8 md:p-12 grid grid-cols-1 lg:grid-cols-12 gap-12">
+                        
+                        <!-- Controles de Entrada -->
+                        <div class="lg:col-span-7 space-y-8">
+                            
+                            <!-- 1. Tipo de Caso -->
+                            <div>
+                                <label class="block text-sm font-bold text-stone-700 mb-3 uppercase tracking-wide">
+                                    1. Tipo de Caso
+                                </label>
+                                <div class="relative">
+                                    <select id="tipo_caso" class="w-full appearance-none bg-white border-2 border-stone-200 text-stone-800 py-4 pl-5 pr-10 rounded-2xl focus:outline-none focus:border-secondary focus:ring-0 font-medium text-lg shadow-sm cursor-pointer">
+                                        <option value="cuantificable">Controversia Cuantificable</option>
+                                        <option value="incuantificable">Controversia Incuantificable</option>
+                                    </select>
+                                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-5 text-stone-500">
+                                        <i class="ph-bold ph-caret-down text-xl"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 2. Composición del Tribunal -->
+                            <div>
+                                <label class="block text-sm font-bold text-stone-700 mb-3 uppercase tracking-wide">
+                                    2. Composición del Tribunal
+                                </label>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <button id="btn_unico" class="tribunal-btn active flex flex-col items-center justify-center py-5 px-4 rounded-2xl border-2 border-secondary bg-yellow-50 text-primary shadow-md transition-all duration-200">
+                                        <i class="ph-fill ph-user text-3xl text-secondary mb-2"></i>
+                                        <span class="font-bold">Árbitro Único</span>
+                                    </button>
+                                    <button id="btn_colegiado" class="tribunal-btn flex flex-col items-center justify-center py-5 px-4 rounded-2xl border-2 border-stone-200 bg-white text-stone-500 hover:border-stone-300 hover:bg-stone-50 transition-all duration-200">
+                                        <i class="ph-fill ph-users text-3xl mb-2"></i>
+                                        <span class="font-bold">Tribunal Colegiado (3)</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- 3. Cuantía (Ocultable) -->
+                            <div id="cuantia_container" class="transition-height overflow-hidden max-h-40 opacity-100 mt-8">
+                                <label class="block text-sm font-bold text-stone-700 mb-3 uppercase tracking-wide">
+                                    3. Monto en Disputa (S/)
+                                </label>
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
+                                        <span class="text-stone-400 font-bold text-xl">S/</span>
+                                    </div>
+                                    <input type="number" id="cuantia_input" min="0" placeholder="Ej. 150000" 
+                                        class="w-full pl-14 pr-6 py-5 bg-white border-2 border-stone-200 rounded-2xl focus:outline-none focus:border-secondary text-2xl font-bold text-stone-800 shadow-sm transition-colors"
+                                    />
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- Resultados: Voucher Elegante -->
+                        <div class="lg:col-span-5">
+                            <div class="bg-white rounded-3xl p-8 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.1)] border border-stone-100 relative h-full flex flex-col">
+                                
+                                <div class="absolute top-0 left-0 w-full h-3 bg-gradient-to-r from-primary via-emerald-700 to-secondary rounded-t-3xl"></div>
+                                
+                                <div class="flex items-center gap-3 mb-8 border-b border-stone-100 pb-6 mt-2">
+                                    <i class="ph-fill ph-receipt text-secondary text-3xl"></i>
+                                    <h3 class="font-serif text-2xl font-bold text-primary">Resumen Estimado</h3>
+                                </div>
+
+                                <div class="space-y-6 flex-grow">
+                                    <div class="flex justify-between items-end">
+                                        <span class="text-stone-500 font-medium leading-tight">Gastos<br>Administrativos</span>
+                                        <span class="font-bold text-stone-800 text-lg" id="res_admin">S/ 0.00</span>
+                                    </div>
+                                    <div class="flex justify-between items-end">
+                                        <span class="text-stone-500 font-medium leading-tight">Honorarios<br>Arbitrales</span>
+                                        <span class="font-bold text-stone-800 text-lg" id="res_honorarios">S/ 0.00</span>
+                                    </div>
+                                    
+                                    <div class="pt-6 border-t border-dashed border-stone-300">
+                                        <div class="flex justify-between items-center mb-3">
+                                            <span class="text-stone-500 font-medium">Subtotal</span>
+                                            <span class="font-bold text-stone-800" id="res_subtotal">S/ 0.00</span>
+                                        </div>
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-stone-500 font-medium">IGV (18%)</span>
+                                            <span class="font-bold text-stone-800" id="res_igv">S/ 0.00</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mt-8 pt-6 border-t-2 border-stone-800 flex flex-col items-center bg-stone-50 -mx-8 -mb-8 p-8 rounded-b-3xl">
+                                    <span class="font-bold text-stone-500 uppercase tracking-widest text-xs mb-2">Costo Total Estimado</span>
+                                    <span class="font-bold text-4xl text-primary drop-shadow-sm" id="res_total">S/ 0.00</span>
+                                    
+                                    <p class="text-center text-[10px] text-stone-400 mt-6 leading-relaxed max-w-xs">
+                                        * El presente cálculo es una simulación referencial no vinculante. Los montos definitivos serán determinados por la Secretaría General de acuerdo a las particularidades del caso y el Arancel vigente.
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-stone-900 text-stone-300 py-12 border-t-4 border-secondary mt-auto">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex items-center gap-4">
+                    <div class="bg-white p-1 rounded-lg shadow-sm">
+                        <img src="img/logo.png" alt="Centro de Arbitraje-Cámara de Comercio Sullana" class="h-10 w-auto object-contain">
+                    </div>
+                    <div>
+                        <span class="font-serif font-bold text-xl text-white block">Centro de Arbitraje-Cámara de Comercio Sullana</span>
+                        <span class="text-xs tracking-widest uppercase text-stone-500">Justicia ⬢ Equidad ⬢ Verdad</span>
+                    </div>
+                </div>
+                <div class="text-sm text-center md:text-right">
+                    <p>&copy; <script>document.write(new Date().getFullYear())</script> Centro de Arbitraje-Cámara de Comercio Sullana.<br>Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lógica JavaScript -->
+    <script>
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) navbar.classList.add('py-2', 'shadow-md');
+            else navbar.classList.remove('py-2', 'shadow-md');
+        });
+
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // L�GICA DE LA CALCULADORA AVANZADA
+        const UIT = 5150; // Valor UIT referencial
+
+        let state = {
+            tipoCaso: 'cuantificable',
+            tribunal: 'unico',
+            cuantia: 0
+        };
+
+        const formatter = new Intl.NumberFormat('es-PE', { style: 'currency', currency: 'PEN' });
+
+        // Elementos UI
+        const tipoCasoSelect = document.getElementById('tipo_caso');
+        const btnUnico = document.getElementById('btn_unico');
+        const btnColegiado = document.getElementById('btn_colegiado');
+        const cuantiaContainer = document.getElementById('cuantia_container');
+        const cuantiaInput = document.getElementById('cuantia_input');
+
+        // Outputs
+        const resAdmin = document.getElementById('res_admin');
+        const resHonorarios = document.getElementById('res_honorarios');
+        const resSubtotal = document.getElementById('res_subtotal');
+        const resIgv = document.getElementById('res_igv');
+        const resTotal = document.getElementById('res_total');
+
+        function updateTribunalButtons() {
+            if (state.tribunal === 'unico') {
+                btnUnico.className = 'tribunal-btn active flex flex-col items-center justify-center py-5 px-4 rounded-2xl border-2 border-secondary bg-yellow-50 text-primary shadow-md transition-all duration-200';
+                btnUnico.querySelector('i').classList.add('text-secondary');
+                
+                btnColegiado.className = 'tribunal-btn flex flex-col items-center justify-center py-5 px-4 rounded-2xl border-2 border-stone-200 bg-white text-stone-500 hover:border-stone-300 hover:bg-stone-50 transition-all duration-200';
+                btnColegiado.querySelector('i').classList.remove('text-secondary');
+            } else {
+                btnColegiado.className = 'tribunal-btn active flex flex-col items-center justify-center py-5 px-4 rounded-2xl border-2 border-secondary bg-yellow-50 text-primary shadow-md transition-all duration-200';
+                btnColegiado.querySelector('i').classList.add('text-secondary');
+                
+                btnUnico.className = 'tribunal-btn flex flex-col items-center justify-center py-5 px-4 rounded-2xl border-2 border-stone-200 bg-white text-stone-500 hover:border-stone-300 hover:bg-stone-50 transition-all duration-200';
+                btnUnico.querySelector('i').classList.remove('text-secondary');
+            }
+        }
+
+        function renderOutput() {
+            let gastosAdmin = 0;
+            let honorarios = 0;
+            const monto = state.cuantia;
+
+            if (state.tipoCaso === 'incuantificable') {
+                // Caso incuantificable: valores fijos en UIT
+                gastosAdmin = UIT * 1;
+                honorarios = UIT * 2.5;
+            } else { // Cuantificable: escala por tramos reales
+                if (monto <= 0) {
+                    gastosAdmin = 0;
+                    honorarios = 0;
+                }
+                // ── Gastos Administrativos (Cuadro 3) ──────────────────
+                else if (monto <= 36000) {
+                    gastosAdmin = 1793;
+                } else if (monto <= 72000) {
+                    gastosAdmin = 1793 + (monto - 36000) * 0.0266;
+                } else if (monto <= 108000) {
+                    gastosAdmin = 2749 + (monto - 72000) * 0.0219;
+                } else if (monto <= 180000) {
+                    gastosAdmin = 3536 + (monto - 108000) * 0.0121;
+                } else if (monto <= 360000) {
+                    gastosAdmin = 4407 + (monto - 180000) * 0.0071;
+                } else if (monto <= 1800000) {
+                    gastosAdmin = 5689 + (monto - 360000) * 0.0042;
+                } else if (monto <= 3600000) {
+                    gastosAdmin = 11679 + (monto - 1800000) * 0.0030;
+                } else {
+                    gastosAdmin = 17071 + (monto - 3600000) * 0.0019;
+                }
+
+                // ── Honorarios Árbitro Único (Cuadro 1) ───────────────
+                if (monto <= 36000) {
+                    honorarios = 3819;
+                } else if (monto <= 72000) {
+                    honorarios = 3819 + (monto - 36000) * 0.0250;
+                } else if (monto <= 108000) {
+                    honorarios = 4719 + (monto - 72000) * 0.0289;
+                } else if (monto <= 180000) {
+                    honorarios = 5760 + (monto - 108000) * 0.0183;
+                } else if (monto <= 360000) {
+                    honorarios = 7080 + (monto - 180000) * 0.0080;
+                } else if (monto <= 1800000) {
+                    honorarios = 8518 + (monto - 360000) * 0.0083;
+                } else if (monto <= 3600000) {
+                    honorarios = 20408 + (monto - 1800000) * 0.0054;
+                } else {
+                    honorarios = 30156 + (monto - 3600000) * 0.0031;
+                }
+            }
+
+            // Colegiado multiplica honorarios por 3
+            if (state.tribunal === 'colegiado' && honorarios > 0) {
+                honorarios = honorarios * 3;
+            }
+
+            const subtotal = gastosAdmin + honorarios;
+            const igv = subtotal * 0.18;
+            const total = subtotal + igv;
+
+            resAdmin.textContent = formatter.format(gastosAdmin);
+            resHonorarios.textContent = formatter.format(honorarios);
+            resSubtotal.textContent = formatter.format(subtotal);
+            resIgv.textContent = formatter.format(igv);
+            resTotal.textContent = formatter.format(total);
+        }
+
+        // Event Listeners
+        tipoCasoSelect.addEventListener('change', (e) => {
+            state.tipoCaso = e.target.value;
+            if (state.tipoCaso !== 'cuantificable') {
+                cuantiaContainer.style.maxHeight = '0px';
+                cuantiaContainer.style.opacity = '0';
+                cuantiaContainer.style.marginTop = '0px';
+                state.cuantia = 0;
+                cuantiaInput.value = '';
+            } else {
+                cuantiaContainer.style.maxHeight = '160px';
+                cuantiaContainer.style.opacity = '100';
+                cuantiaContainer.style.marginTop = '2rem';
+                state.cuantia = parseFloat(cuantiaInput.value) || 0;
+            }
+            renderOutput();
+        });
+
+        btnUnico.addEventListener('click', () => {
+            state.tribunal = 'unico';
+            updateTribunalButtons();
+            renderOutput();
+        });
+
+        btnColegiado.addEventListener('click', () => {
+            state.tribunal = 'colegiado';
+            updateTribunalButtons();
+            renderOutput();
+        });
+
+        cuantiaInput.addEventListener('input', (e) => {
+            state.cuantia = parseFloat(e.target.value) || 0;
+            renderOutput();
+        });
+
+        // Initialize UI
+        updateTribunalButtons();
+        renderOutput();
+
+    </script>
+</body>
+</html>
